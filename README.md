@@ -1,0 +1,3 @@
+A roguelite game where the player takes control of a demonlike character and progresses through randomly generated rooms. At the end of every **floor**, the player kills a **boss** and collects its Essence in form of a **spell**. Also there is random chance that the players can find random **passive essences** that grants stat bonuses for the rest of **the run (A *run* means a single playthrough from the moment the players starts the game and dies)** . After killing the boss, the player travels to the next floor.
+
+At the start of each floor, player can select up to three abilities from his **spellbook** and continues progressing the floors.
