@@ -28,14 +28,14 @@ namespace Dogabeey
 		{
             get
 			{
-				return entity.state == Entity.EntityState.Idle;
+				return entity.State == Entity.EntityState.Idle;
             }
         }
         public bool Run
         {
             get
             {
-                return entity.state == Entity.EntityState.Run;
+                return entity.State == Entity.EntityState.Run;
             }
         }
         public bool Jump
@@ -47,7 +47,7 @@ namespace Dogabeey
         }
 
         protected Animator animator;
-		protected Entity entity;
+		protected Creature entity;
 
 		#region Events
 
@@ -81,7 +81,7 @@ namespace Dogabeey
 
 		public virtual void Start()
 		{
-			entity = GetComponent<Entity>();
+			entity = GetComponent<Creature>();
 			animator = GetComponent<Animator>();
 		}
 
