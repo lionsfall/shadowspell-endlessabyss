@@ -64,6 +64,9 @@ namespace Dogabeey
             public const string LEVEL_STARTED = "LEVEL_STARTED";
 
             public const string CURRENT_WORLD_CHANGED = "CURRENT_WORLD_CHANGED";
+
+            public const string CREATURE_DEATH = "CREATURE_DEATH";
+            public const string CREATURE_JUMP = "CREATURE_JUMP";
         }
     }
 }
