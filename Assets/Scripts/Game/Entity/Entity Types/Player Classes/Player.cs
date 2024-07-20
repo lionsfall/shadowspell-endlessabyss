@@ -55,24 +55,34 @@ namespace Dogabeey
 
         public override void OnHurt(Entity damageSource, float damage)
         {
-            throw new System.NotImplementedException();
+            base.OnHurt(damageSource, damage);
         }
         public override void OnDeath(Entity killer)
         {
-            throw new System.NotImplementedException();
+            base.OnDeath(killer);
         }
         public override void OnDamage(Entity target, float damage)
         {
-            throw new System.NotImplementedException();
+            base.OnDamage(target, damage);
         }
         public override void OnAttack(Entity target)
         {
-            throw new System.NotImplementedException();
+            base.OnAttack(target);
         }
 
         public override void Attack(Entity target)
         {
-            throw new System.NotImplementedException();
+            if (projectile != null)
+            {
+                Projectile p = Instantiate(projectile, transform.position, Quaternion.identity);
+                p.owner = this;
+                p.transform.LookAt(target.transform);
+            }
+        }
+
+        public override void Hurt(Entity damageSource, float damage)
+        {
+            throw new NotImplementedException();
         }
     }
 }

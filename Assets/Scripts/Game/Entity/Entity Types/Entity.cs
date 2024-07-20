@@ -35,6 +35,7 @@ namespace Dogabeey
         {
             entities.Remove(this);
         }
+
     }
     public abstract class Creature : Entity
     {
@@ -149,6 +150,7 @@ namespace Dogabeey
         }
 
         public abstract void Attack(Entity target);
+        public abstract void Hurt(Entity damageSource, float damage);
     }
 
     public abstract class EnemyEntity : Creature
