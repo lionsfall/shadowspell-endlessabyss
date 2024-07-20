@@ -76,6 +76,7 @@ namespace Dogabeey
             {
                 Projectile p = Instantiate(projectile, transform.position, Quaternion.identity);
                 p.owner = this;
+                p.target = target;
                 p.transform.LookAt(target.transform);
             }
         }
