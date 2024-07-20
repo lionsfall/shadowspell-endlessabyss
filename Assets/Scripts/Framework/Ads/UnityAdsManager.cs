@@ -52,12 +52,12 @@ public class UnityAdsManager : SingletonComponent<UnityAdsManager>
         timeSinceLastAd = 0.0f;
 
 #if UNITY_ANDROID
-        gameId = "5622038";
+        gameId = "5661402";
         IS_adUnitId = "Interstitial_Android";
         RW_adUnitId = "Rewarded_Android";
         Banner_adUnitId = "Banner_Android";
 #elif UNITY_IOS
-        gameId = "5622039"; // Replace with your actual iOS Game ID
+        gameId = "5661403"; // Replace with your actual iOS Game ID
         IS_adUnitId = "Interstitial_iOS"; // Replace with your actual iOS Ad Unit ID
         RW_adUnitId = "Rewarded_iOS"; // Replace with your actual iOS Ad Unit ID
         Banner_adUnitId = "Banner_iOS"; // Replace with your actual iOS Ad Unit ID
