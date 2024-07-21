@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adacbb59d96b604409ba2c4b3b05da9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 1
+  speedMultiplier: 4
   rotationSpeed: 10
 --- !u!65 &3802031028258798620
 BoxCollider:
@@ -946,8 +946,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
---- !u!224 &794179512749315551 stripped
-RectTransform:
+--- !u!4 &794179512749315551 stripped
+Transform:
   m_CorrespondingSourceObject: {fileID: 6567223859183803114, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
   m_PrefabInstance: {fileID: 5775313747032543029}
   m_PrefabAsset: {fileID: 0}

@@ -21,6 +21,8 @@ namespace Dogabeey
 
         protected override void Start()
         {
+            base.Start();
+
             StartCoroutine(AttackSequence());
         }
 
@@ -44,7 +46,7 @@ namespace Dogabeey
             foreach (EnemyEntity e in enemies)
             {
                 float distance = Vector3.Distance(transform.position, e.transform.position);
-                if (distance < minDistance)
+                if (distance <= minDistance)
                 {
                     minDistance = distance;
                     enemy = e;
