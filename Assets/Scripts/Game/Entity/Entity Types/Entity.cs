@@ -11,7 +11,7 @@ namespace Dogabeey
     public abstract class Entity : MonoBehaviour
     {
 
-        public static List<Entity> entities;
+        public static List<Entity> entities = new List<Entity>();
         public enum EntityState
         {
             Idle,
