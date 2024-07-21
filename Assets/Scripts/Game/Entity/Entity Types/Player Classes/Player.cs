@@ -19,7 +19,7 @@ namespace Dogabeey
         public override float Speed => baseSpeed;
         public override float ProjectileSpeed => baseProjectileSpeed;
 
-        private void Start()
+        protected override void Start()
         {
             StartCoroutine(AttackSequence());
         }

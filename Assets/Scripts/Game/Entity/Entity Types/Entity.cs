@@ -19,19 +19,19 @@ namespace Dogabeey
             Dead
         }
 
-        internal Rigidbody2D rb;
-        internal Collider2D cd;
+        internal Rigidbody rb;
+        internal Collider cd;
 
 
         // Start is called before the first frame update
-        void Start()
+        protected virtual void Start()
         {
-            rb = GetComponent<Rigidbody2D>();
-            cd = GetComponent<Collider2D>();
+            rb = GetComponent<Rigidbody>();
+            cd = GetComponent<Collider>();
 
             entities.Add(this);
         }
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             entities.Remove(this);
         }

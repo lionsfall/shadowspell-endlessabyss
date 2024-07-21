@@ -42,7 +42,7 @@ namespace Dogabeey
         {
             get
             {
-				return Mathf.Abs(entity.rb.velocity.y) > minVelocity;
+				return Mathf.Abs(entity.rb.linearVelocity.y) > minVelocity;
             }
         }
 
