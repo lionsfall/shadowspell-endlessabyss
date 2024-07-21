@@ -39,13 +39,13 @@ namespace Dogabeey
         public ProjectileType projectileType;
         public ProjectileFlags projectileFlags;
         public float tickTime = 1f;
-        public float uptime = 5f;
+        public float maxRange;
+        public float uptime => owner.Range / owner.ProjectileSpeed;
 
         private void Start()
         {
             FireProjectile();
             InvokeRepeating(nameof(OnTick), 0, tickTime);
-            Destroy(gameObject, uptime);
         }
         private void OnDestroy()
         {
@@ -79,13 +79,12 @@ namespace Dogabeey
             {
                 // Send projectile towards the target
                 Vector3 towards = target.transform.position - transform.position;
-                transform.DOMove(owner.transform.position + towards * 100, Vector3.Distance(towards * 100, transform.position))
+                transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear);
             }
             else
             {
-                transform.DOMove(owner.transform.position + owner.transform.forward * 100, 
-                    Vector3.Distance(owner.transform.forward * 100, owner.transform.position))
+                transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear);
             }
 

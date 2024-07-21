@@ -416,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000000062924094
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.y
@@ -424,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.508602
+      value: 14.44
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -516,10 +516,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6973415298829709528, guid: 53ebe55db6df1114c8229672366e9e89, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

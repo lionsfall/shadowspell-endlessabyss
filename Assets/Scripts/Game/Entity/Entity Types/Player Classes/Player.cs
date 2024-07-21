@@ -26,6 +26,12 @@ namespace Dogabeey
             StartCoroutine(AttackSequence());
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, Range);
+        }
+
         private IEnumerator AttackSequence()
         {
             while (true)
