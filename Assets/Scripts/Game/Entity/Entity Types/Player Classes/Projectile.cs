@@ -57,14 +57,13 @@ namespace Dogabeey
             {
                 if((owner is Player && entity is EnemyEntity) || (owner is EnemyEntity && entity is Player))
                 {
-                    return;
-                }
-                OnHit();
-                entity.Hurt(owner, owner.Damage);
-                //Destroy the projectile if has no piercing flag
-                if (!projectileFlags.HasFlag(ProjectileFlags.Piercing))
-                {
-                    Destroy(gameObject);
+                    OnHit();
+                    entity.Hurt(owner, owner.Damage);
+                    //Destroy the projectile if has no piercing flag
+                    if (!projectileFlags.HasFlag(ProjectileFlags.Piercing))
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

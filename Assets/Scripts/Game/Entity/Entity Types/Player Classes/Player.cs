@@ -85,7 +85,6 @@ namespace Dogabeey
 
         public override void Hurt(Entity damageSource, float damage)
         {
-            throw new NotImplementedException();
         }
     }
 }

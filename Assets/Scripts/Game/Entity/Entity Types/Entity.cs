@@ -56,25 +56,26 @@ namespace Dogabeey
         private Entity lastDamager;
         private Entity lastAttacked;
         private Entity lastVictim;
+        private float currentHealth;
 
         public abstract bool IsPlayer { get; }
         public float CurrentHealth
         {
-            get => CurrentHealth;
+            get => currentHealth;
             set
             {
                 if (value <= 0)
                 {
-                    state = EntityState.Dead;
-                    CurrentHealth = 0;
+                    State = EntityState.Dead;
+                    currentHealth = 0;
                 }
                 if (value > MaxHealth)
                 {
-                    CurrentHealth = MaxHealth;
+                    currentHealth = MaxHealth;
                 }
                 else
                 {
-                    CurrentHealth = value;
+                    currentHealth = value;
                 }
             }
         }
@@ -94,7 +95,7 @@ namespace Dogabeey
                     case EntityState.Run:
                         break;
                     case EntityState.Dead:
-                        OnDeath(null);
+                        OnDeath(lastDamager);
                         break;
                     default:
                         break;
@@ -150,7 +151,11 @@ namespace Dogabeey
         }
 
         public abstract void Attack(Entity target);
-        public abstract void Hurt(Entity damageSource, float damage);
+        public virtual void Hurt(Entity damageSource, float damage)
+        {
+            OnHurt(damageSource, damage);
+            CurrentHealth -= damage;
+        }
     }
 
     public abstract class EnemyEntity : Creature
