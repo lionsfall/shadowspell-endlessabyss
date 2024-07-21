@@ -29,6 +29,8 @@ namespace Dogabeey
                 Vector3 direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
 
                 player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
+                // Look at direction
+                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
             }
         }
     }

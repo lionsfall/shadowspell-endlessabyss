@@ -11,7 +11,7 @@ namespace Dogabeey
 {
     public class Projectile : MonoBehaviour
     {
-        public enum ProjectileType
+        public enum ProjectileType // NOT IMPLEMENTED
         {
             None,
             Fire,
@@ -23,9 +23,11 @@ namespace Dogabeey
         public enum ProjectileFlags
         {
             None = 0,
-            Piercing = 1,
-            Bouncing = 2,
-            Homing = 4,
+            PiercesEnemy = 1, // not implemented
+            PiercesWalls = 2, // not implemented
+            Bouncing = 4, // not implemented
+            Homing = 8, // not implemented
+            Aura = 16, // not implemented
         }
 
         public Creature owner;
@@ -60,7 +62,7 @@ namespace Dogabeey
                     OnHit();
                     entity.Hurt(owner, owner.Damage);
                     //Destroy the projectile if has no piercing flag
-                    if (!projectileFlags.HasFlag(ProjectileFlags.Piercing))
+                    if (!projectileFlags.HasFlag(ProjectileFlags.PiercesEnemy))
                     {
                         Destroy(gameObject);
                     }
@@ -80,12 +82,14 @@ namespace Dogabeey
                 // Send projectile towards the target
                 Vector3 towards = target.transform.position - transform.position;
                 transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
-                    .SetEase(Ease.Linear);
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => Destroy(gameObject));
             }
             else
             {
                 transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
-                    .SetEase(Ease.Linear);
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => Destroy(gameObject));
             }
 
         }
