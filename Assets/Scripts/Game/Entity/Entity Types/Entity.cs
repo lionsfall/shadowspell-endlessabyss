@@ -109,6 +109,12 @@ namespace Dogabeey
         public abstract float Speed { get; }
         public abstract float ProjectileSpeed { get; }
 
+        protected override void Start()
+        {
+            base.Start();
+            CurrentHealth = MaxHealth;
+        }
+
         /// <summary>
         /// When the entity is hurt by any source of damage.
         /// </summary>

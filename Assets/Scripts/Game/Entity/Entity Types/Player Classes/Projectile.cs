@@ -44,11 +44,14 @@ namespace Dogabeey
         public float maxRange;
         public float uptime => owner.Range / owner.ProjectileSpeed;
 
+        private Tween movementTween;
+
         private void Start()
         {
             FireProjectile();
             InvokeRepeating(nameof(OnTick), 0, tickTime);
         }
+
         private void OnDestroy()
         {
             OnProjectileDeath();
@@ -81,13 +84,13 @@ namespace Dogabeey
             {
                 // Send projectile towards the target
                 Vector3 towards = target.transform.position - transform.position;
-                transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
             else
             {
-                transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
@@ -103,6 +106,14 @@ namespace Dogabeey
         public virtual void OnTick()
         {
             onTick.Invoke();
+            // Update moevement target
+            if (target != null && projectileFlags.HasFlag(ProjectileFlags.Homing))
+            {
+                Vector3 towards = target.transform.position - transform.position;
+                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => Destroy(gameObject));
+            }
         }
         public virtual void OnProjectileDeath()
         {

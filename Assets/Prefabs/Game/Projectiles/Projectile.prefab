@@ -136,6 +136,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   projectileType: 0
-  projectileFlags: 0
+  projectileFlags: 8
   tickTime: 1
-  uptime: 10
+  maxRange: 0
