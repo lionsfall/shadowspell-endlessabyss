@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Dogabeey.SimpleJSON;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +11,14 @@ namespace Dogabeey
 {
     public class Player : Creature
     {
-        public Projectile projectile;
+        [Header("Projectile Settings")]
+        public Projectile projectilePrefab;
+
+        internal Projectile ProjectileInstance
+        {
+            get;
+            set;
+        }
 
         public override bool IsPlayer => true;
         public override float MaxHealth => baseMaxHealth;
@@ -19,11 +28,19 @@ namespace Dogabeey
         public override float Speed => baseSpeed;
         public override float ProjectileSpeed => baseProjectileSpeed;
 
+        public string SaveId => "Player";
+
+        private void Awake()
+        {
+
+        }
+
         protected override void Start()
         {
             base.Start();
 
             StartCoroutine(AttackSequence());
+            ProjectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         }
 
         private void OnDrawGizmosSelected()
@@ -80,12 +97,13 @@ namespace Dogabeey
 
         public override void Attack(Entity target)
         {
-            if (projectile != null)
+            if (projectilePrefab != null)
             {
-                Projectile p = Instantiate(projectile, transform.position, Quaternion.identity);
+                Projectile p = Instantiate(ProjectileInstance, transform.position, Quaternion.identity);
                 p.owner = this;
                 p.target = target;
                 p.transform.LookAt(target.transform);
+                p.gameObject.SetActive(true);
             }
         }
 

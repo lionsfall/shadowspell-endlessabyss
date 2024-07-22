@@ -39,6 +39,7 @@
 
 #endregion License and information
 
+using System;
 using UnityEngine;
 
 namespace Dogabeey.SimpleJSON

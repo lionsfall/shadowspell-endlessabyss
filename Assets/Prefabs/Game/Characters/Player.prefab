@@ -177,7 +177,7 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
-  projectile: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
+  projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
 --- !u!114 &8290870676356346226
 MonoBehaviour:
   m_ObjectHideFlags: 0

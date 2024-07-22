@@ -6,19 +6,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using Dogabeey.SimpleJSON;
 
 namespace Dogabeey
 {
+
     public class Projectile : MonoBehaviour
     {
-        public enum ProjectileType // NOT IMPLEMENTED
-        {
-            None,
-            Fire,
-            Ice,
-            Poison,
-            Lightning
-        }
         [Flags]
         public enum ProjectileFlags
         {
@@ -38,7 +32,6 @@ namespace Dogabeey
         public UnityEvent onProjectileDeath;
         public UnityEvent onHit;
         [Space]
-        public ProjectileType projectileType;
         public ProjectileFlags projectileFlags;
         public float tickTime = 1f;
         public float maxRange;
@@ -122,6 +115,17 @@ namespace Dogabeey
         public virtual void OnHit()
         {
             onHit.Invoke();
+        }
+
+        public static explicit operator Projectile(JSONNode v)
+        {
+            var projectile = new Projectile
+            {
+                projectileFlags = (ProjectileFlags)(int)v["ProjectileFlags"],
+                tickTime = (float)v["TickTime"],
+                maxRange = (float)v["MaxRange"]
+            };
+            return projectile;
         }
     }
 }

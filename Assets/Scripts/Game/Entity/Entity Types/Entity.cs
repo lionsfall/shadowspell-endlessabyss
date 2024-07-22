@@ -56,26 +56,26 @@ namespace Dogabeey
         private Entity lastDamager;
         private Entity lastAttacked;
         private Entity lastVictim;
-        private float currentHealth;
 
         public abstract bool IsPlayer { get; }
         public float CurrentHealth
         {
-            get => currentHealth;
+            get =>
+                    PlayerPrefs.GetFloat("Health_" + GetHashCode(), MaxHealth);
             set
             {
                 if (value <= 0)
                 {
                     State = EntityState.Dead;
-                    currentHealth = 0;
+                    PlayerPrefs.SetFloat("Health_" + GetHashCode(), 0);
                 }
                 if (value > MaxHealth)
                 {
-                    currentHealth = MaxHealth;
+                    PlayerPrefs.SetFloat("Health_" + GetHashCode(), MaxHealth);
                 }
                 else
                 {
-                    currentHealth = value;
+                    PlayerPrefs.SetFloat("Health_" + GetHashCode(), value);
                 }
             }
         }
@@ -161,6 +161,11 @@ namespace Dogabeey
         {
             OnHurt(damageSource, damage);
             CurrentHealth -= damage;
+        }
+
+        internal virtual void Heal(int healAmount)
+        {
+            CurrentHealth += healAmount;
         }
     }
 
