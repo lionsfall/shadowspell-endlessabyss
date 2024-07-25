@@ -16,11 +16,18 @@ namespace Dogabeey
             this.type = type;
         }
 
-        public static float CalculateValue(float baseValue, List<StatModifier> stats)
+    }
+    [System.Serializable]
+    public class MaxHealthModifier : StatModifier
+    {
+        public MaxHealthModifier(float value, ModifierType type) : base(value, type)
         {
-            List<StatModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
-            List<StatModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
-            List<StatModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+        }
+        public static float CalculateValue(float baseValue, List<MaxHealthModifier> stats)
+        {
+            List<MaxHealthModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<MaxHealthModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<MaxHealthModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
 
             float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
             float flatValue = flat.Select(v => v.value).Sum();
@@ -34,17 +41,27 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
-    public class MaxHealthModifier : StatModifier
-    {
-        public MaxHealthModifier(float value, ModifierType type) : base(value, type)
-        {
-        }
-    }
-    [System.Serializable]
     public class DamageModifier : StatModifier
     {
         public DamageModifier(float value, ModifierType type) : base(value, type)
         {
+        }
+
+        public static float CalculateValue(float baseValue, List<DamageModifier> stats)
+        {
+            List<DamageModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<DamageModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<DamageModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+
+            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            float flatValue = flat.Select(v => v.value).Sum();
+            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
         }
     }
     [System.Serializable]
@@ -53,6 +70,23 @@ namespace Dogabeey
         public AttackRateModifier(float value, ModifierType type) : base(value, type)
         {
         }
+
+        public static float CalculateValue(float baseValue, List<AttackRateModifier> stats)
+        {
+            List<AttackRateModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<AttackRateModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<AttackRateModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+
+            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            float flatValue = flat.Select(v => v.value).Sum();
+            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
+        }
     }
     [System.Serializable]
     public class RangeModifier : StatModifier
@@ -60,12 +94,70 @@ namespace Dogabeey
         public RangeModifier(float value, ModifierType type) : base(value, type)
         {
         }
+
+        public static float CalculateValue(float baseValue, List<RangeModifier> stats)
+        {
+            List<RangeModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<RangeModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<RangeModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+
+            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            float flatValue = flat.Select(v => v.value).Sum();
+            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
+        }
     }
     [System.Serializable]
     public class SpeedModifier : StatModifier
     {
         public SpeedModifier(float value, ModifierType type) : base(value, type)
         {
+        }
+
+        public static float CalculateValue(float baseValue, List<SpeedModifier> stats)
+        {
+            List<SpeedModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<SpeedModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<SpeedModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+
+            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            float flatValue = flat.Select(v => v.value).Sum();
+            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
+        }
+    }
+    [System.Serializable]
+    public class ProjectileSpeedModifier : StatModifier
+    {
+        public ProjectileSpeedModifier(float value, ModifierType type) : base(value, type)
+        {
+        }
+
+        public static float CalculateValue(float baseValue, List<ProjectileSpeedModifier> stats)
+        {
+            List<ProjectileSpeedModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<ProjectileSpeedModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<ProjectileSpeedModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+
+            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            float flatValue = flat.Select(v => v.value).Sum();
+            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
         }
     }
     public enum ModifierType

@@ -26,13 +26,15 @@ namespace Dogabeey
         public List<AttackRateModifier> attackRateModifiers;
         public List<RangeModifier> rangeModifiers;
         public List<SpeedModifier> speedModifiers;
+        public List<ProjectileSpeedModifier> projectileSpeedModifiers;
+
 
         public override bool IsPlayer => true;
-        public override float MaxHealth => baseMaxHealth;
-        public override float Damage => baseDamage;
-        public override float AttackRate => baseAttackRate;
-        public override float Range => baseRange;
-        public override float Speed => baseSpeed;
+        public override float MaxHealth => MaxHealthModifier.CalculateValue(baseMaxHealth, maxHealthModifiers);
+        public override float Damage => DamageModifier.CalculateValue(baseDamage, damageModifiers);
+        public override float AttackRate => AttackRateModifier.CalculateValue(baseAttackRate, attackRateModifiers);
+        public override float Range => RangeModifier.CalculateValue(baseRange, rangeModifiers);
+        public override float Speed => SpeedModifier.CalculateValue(baseSpeed, speedModifiers);
         public override float ProjectileSpeed => baseProjectileSpeed;
 
         public string SaveId => "Player";

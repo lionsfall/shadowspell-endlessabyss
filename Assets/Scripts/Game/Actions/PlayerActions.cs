@@ -74,6 +74,15 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
+    public class AddProjectileSpeedModifier : PlayerAction
+    {
+        public ProjectileSpeedModifier modifier;
+        public override void Invoke(Player player)
+        {
+            player.projectileSpeedModifiers.Add(modifier);
+        }
+    }
+    [System.Serializable]
     public class RemoveDamageModifier : PlayerAction
     {
         public DamageModifier modifier;
@@ -116,6 +125,15 @@ namespace Dogabeey
         public override void Invoke(Player player)
         {
             player.speedModifiers.Remove(modifier);
+        }
+    }
+    [System.Serializable]
+    public class RemoveProjectileSpeedModifier : PlayerAction
+    {
+        public ProjectileSpeedModifier modifier;
+        public override void Invoke(Player player)
+        {
+            player.projectileSpeedModifiers.Remove(modifier);
         }
     }
 }
