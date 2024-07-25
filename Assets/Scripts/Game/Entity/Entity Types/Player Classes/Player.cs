@@ -21,11 +21,11 @@ namespace Dogabeey
         }
 
         [Header("Player Stats")]
-        [SerializeField] private List<MaxHealthModifier> maxHealthModifier;
-        [SerializeField] private List<DamageModifier> damageModifier;
-        [SerializeField] private List<AttackRateModifier> attackRateModifier;
-        [SerializeField] private List<RangeModifier> rangeModifier;
-        [SerializeField] private List<SpeedModifier> speedModifier;
+        public List<MaxHealthModifier> maxHealthModifiers;
+        public List<DamageModifier> damageModifiers;
+        public List<AttackRateModifier> attackRateModifiers;
+        public List<RangeModifier> rangeModifiers;
+        public List<SpeedModifier> speedModifiers;
 
         public override bool IsPlayer => true;
         public override float MaxHealth => baseMaxHealth;

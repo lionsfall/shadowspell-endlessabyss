@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: baseProjectileSpeed
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 6973415298829709528, guid: 53ebe55db6df1114c8229672366e9e89, type: 3}
+      propertyPath: maxHealthModifier.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
