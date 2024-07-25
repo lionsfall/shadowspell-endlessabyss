@@ -35,7 +35,7 @@ namespace Dogabeey
         public override float AttackRate => AttackRateModifier.CalculateValue(baseAttackRate, attackRateModifiers);
         public override float Range => RangeModifier.CalculateValue(baseRange, rangeModifiers);
         public override float Speed => SpeedModifier.CalculateValue(baseSpeed, speedModifiers);
-        public override float ProjectileSpeed => baseProjectileSpeed;
+        public override float ProjectileSpeed => ProjectileSpeedModifier.CalculateValue(baseProjectileSpeed, projectileSpeedModifiers);
 
         public string SaveId => "Player";
 
