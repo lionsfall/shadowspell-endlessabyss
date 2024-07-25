@@ -163,7 +163,7 @@ namespace Dogabeey
             CurrentHealth -= damage;
         }
 
-        internal virtual void Heal(int healAmount)
+        internal virtual void Heal(float healAmount)
         {
             CurrentHealth += healAmount;
         }
