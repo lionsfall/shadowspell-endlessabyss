@@ -134,4 +134,40 @@ namespace Dogabeey
             player.projectileSpeedModifiers.Remove(modifier);
         }
     }
+    [System.Serializable]
+    public class AddProjectileActionOnFire : PlayerAction
+    {
+        public ProjectileAction action;
+        public override void Invoke(Player player)
+        {
+            player.ProjectileInstance.onFire.Add(action);
+        }
+    }
+    [System.Serializable]
+    public class AddProjectileActionOnHit : PlayerAction
+    {
+        public ProjectileAction action;
+        public override void Invoke(Player player)
+        {
+            player.ProjectileInstance.onHit.Add(action);
+        }
+    }
+    [System.Serializable]
+    public class AddProjectileActionOnProjectileDeath : PlayerAction
+    {
+        public ProjectileAction action;
+        public override void Invoke(Player player)
+        {
+            player.ProjectileInstance.onProjectileDeath.Add(action);
+        }
+    }
+    [System.Serializable]
+    public class AddProjectileActionOnTick : PlayerAction
+    {
+        public ProjectileAction action;
+        public override void Invoke(Player player)
+        {
+            player.ProjectileInstance.onTick.Add(action);
+        }
+    }
 }

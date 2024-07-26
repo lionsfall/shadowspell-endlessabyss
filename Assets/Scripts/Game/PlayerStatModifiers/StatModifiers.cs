@@ -28,11 +28,22 @@ namespace Dogabeey
             List<MaxHealthModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
             List<MaxHealthModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
             List<MaxHealthModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
 
-            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-            float flatValue = flat.Select(v => v.value).Sum();
-            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0) 
+            { 
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
             baseValue *= percentPreFlatValue;
             baseValue += flatValue;
             baseValue *= percentPostFlatValue;
@@ -46,17 +57,27 @@ namespace Dogabeey
         public DamageModifier(float value, ModifierType type) : base(value, type)
         {
         }
-
         public static float CalculateValue(float baseValue, List<DamageModifier> stats)
         {
             List<DamageModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
             List<DamageModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
             List<DamageModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
 
-            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-            float flatValue = flat.Select(v => v.value).Sum();
-            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
             baseValue *= percentPreFlatValue;
             baseValue += flatValue;
             baseValue *= percentPostFlatValue;
@@ -76,11 +97,22 @@ namespace Dogabeey
             List<AttackRateModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
             List<AttackRateModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
             List<AttackRateModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
 
-            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-            float flatValue = flat.Select(v => v.value).Sum();
-            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
             baseValue *= percentPreFlatValue;
             baseValue += flatValue;
             baseValue *= percentPostFlatValue;
@@ -100,11 +132,22 @@ namespace Dogabeey
             List<RangeModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
             List<RangeModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
             List<RangeModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
 
-            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-            float flatValue = flat.Select(v => v.value).Sum();
-            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
             baseValue *= percentPreFlatValue;
             baseValue += flatValue;
             baseValue *= percentPostFlatValue;
@@ -124,11 +167,22 @@ namespace Dogabeey
             List<SpeedModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
             List<SpeedModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
             List<SpeedModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
 
-            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-            float flatValue = flat.Select(v => v.value).Sum();
-            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
             baseValue *= percentPreFlatValue;
             baseValue += flatValue;
             baseValue *= percentPostFlatValue;
@@ -148,11 +202,22 @@ namespace Dogabeey
             List<ProjectileSpeedModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
             List<ProjectileSpeedModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
             List<ProjectileSpeedModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
 
-            float percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-            float flatValue = flat.Select(v => v.value).Sum();
-            float percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
-
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
             baseValue *= percentPreFlatValue;
             baseValue += flatValue;
             baseValue *= percentPostFlatValue;

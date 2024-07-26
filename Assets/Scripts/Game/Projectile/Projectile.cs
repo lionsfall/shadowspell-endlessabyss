@@ -7,11 +7,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 using Dogabeey.SimpleJSON;
+using Sirenix.OdinInspector;
 
 namespace Dogabeey
 {
 
-    public class Projectile : MonoBehaviour
+    public class Projectile : SerializedMonoBehaviour
     {
         [Flags]
         public enum ProjectileFlags
@@ -27,10 +28,10 @@ namespace Dogabeey
         public Creature owner;
         public Entity target;
         [Space]
-        public UnityEvent onFire;
-        public UnityEvent onTick;
-        public UnityEvent onProjectileDeath;
-        public UnityEvent onHit;
+        public List<ProjectileAction> onFire;
+        public List<ProjectileAction> onTick;
+        public List<ProjectileAction> onProjectileDeath;
+        public List<ProjectileAction> onHit;
         [Space]
         public ProjectileFlags projectileFlags;
         public float tickTime = 1f;
@@ -112,13 +113,13 @@ namespace Dogabeey
 
         public virtual void OnFire()
         {
-            onFire.Invoke();
+            onFire.ForEach(o => o.Invoke(this));
 
             // Fire logic;
         }
         public virtual void OnTick()
         {
-            onTick.Invoke();
+            onTick.ForEach(o => o.Invoke(this));
             // Update moevement target
             if (target != null && projectileFlags.HasFlag(ProjectileFlags.Homing))
             {
@@ -130,11 +131,11 @@ namespace Dogabeey
         }
         public virtual void OnProjectileDeath()
         {
-            onProjectileDeath.Invoke();
+            onProjectileDeath.ForEach(o => o.Invoke(this));
         }
         public virtual void OnHit()
         {
-            onHit.Invoke();
+            onHit.ForEach(o => o.Invoke(this));
         }
 
         public static explicit operator Projectile(JSONNode v)
