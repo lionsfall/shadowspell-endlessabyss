@@ -73,8 +73,28 @@ namespace Dogabeey
         {
             OnFire();
             //TODO: Implement fire logic
-            if(target != null)
+            if (target != null)
             {
+                // Send projectile towards the target
+                Vector3 towards = target.transform.position - transform.position;
+                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => Destroy(gameObject));
+            }
+            else
+            {
+                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => Destroy(gameObject));
+            }
+
+        }
+        public void FireStandaloneProjectile(Creature owner, Creature target)
+        {
+            OnFire();
+            //TODO: Implement fire logic
+            if (target != null)
+            {   
                 // Send projectile towards the target
                 Vector3 towards = target.transform.position - transform.position;
                 movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
