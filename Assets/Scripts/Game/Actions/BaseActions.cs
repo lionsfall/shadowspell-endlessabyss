@@ -29,5 +29,10 @@ namespace Dogabeey
     {
         public abstract void Invoke(Player source, Creature target);
     }
+    [System.Serializable]
+    public abstract class  ProjectileAction : BaseAction
+    {
+        public abstract void Invoke(Projectile projectile);
+    }
 
 }
