@@ -1,5 +1,6 @@
 using Dogabeey;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,27 +10,37 @@ namespace Dogabeey
     [CreateAssetMenu(fileName = "New Essence", menuName = "Scriptable Objects/New Essence...")]
     public class Essence : SerializedScriptableObject
     {
+        [System.Serializable]
+        public class EssenceDrop
+        {
+            public Essence essence;
+            public int dropWeight;
+        }
+
+        public int essenceID;
         public string essenceName;
         public string essenceDescription;
         public Sprite essenceIcon;
+        public MeshRenderer essenceMesh;
+        [Space]
         public List<PlayerAction> onAcquired;
-        public UnityEvent onTick;
+        public List<PlayerAction> onTick;
+
 
         public void OnEssenceAcquired(Player creature)
         {
-            for (int i = 0; i < onAcquired.Count; i++)
-            {
-                onAcquired[i].Invoke(creature);
-            }
+            onAcquired.ForEach(a => a.Invoke(creature));
         }
-        public void OnEssenceTick()
+        public void OnEssenceTick(Player creature)
         {
-
+            onTick.ForEach(a => a.Invoke(creature));
         }
 
-        public void AcquireByCreature(Player creature)
+        internal void DropEssence(EssenceController controller, Vector3 position)
         {
-            OnEssenceAcquired(creature);
+            EssenceController essenceInstance = Instantiate(controller, position, Quaternion.identity);
+            essenceInstance.Essence = this;
+            essenceInstance.transform.parent = LevelScene.Instance.transform;
         }
     }
 }

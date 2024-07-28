@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26784ae87aabc9c45a701fc253c9427d, type: 3}
-  m_Name: New Essence
+  m_Name: Test Essence
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,21 +22,13 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: onAcquired
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Dogabeey.PlayerAction, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 8
+    - Name: onTick
+      Entry: 6
       Data: 
-  essenceName: 
-  essenceDescription: 
-  essenceIcon: {fileID: 0}
-  onTick:
-    m_PersistentCalls:
-      m_Calls: []
+  essenceID: 0
+  essenceName: Test Essence
+  essenceDescription: This is a test essence.
+  essenceIcon: {fileID: 21300000, guid: 207a49b82e87e41439dceec37c05fa0f, type: 3}
+  essenceMesh: {fileID: 1975865927429741083, guid: 553161073598b3c4281545c70150daab, type: 3}

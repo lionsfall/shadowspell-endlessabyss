@@ -314,7 +314,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdf9973842c0f741a69c46acd73a253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMaxHealth: 10
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: targetCreature
+      Entry: 7
+      Data: 0|Dogabeey.PickClosestWithinRange, Assembly-CSharp
+    - Name: range
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+  baseMaxHealth: 1
   baseDamage: 0
   baseAttackRate: 0
   baseRange: 0
@@ -332,3 +350,9 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
+  essencePrefab: {fileID: 5599279708850110741, guid: f9b88272a15aa78409e560e4de70b823, type: 3}
+  dropOffset: {x: 0, y: 0.5, z: 0}
+  essenceDropRate: 1
+  dropPool:
+  - essence: {fileID: 11400000, guid: 9fa3e5a7713916d4483cd3a17e3be59f, type: 2}
+    dropWeight: 1

@@ -31,6 +31,8 @@ namespace Dogabeey
         public List<SpeedModifier> speedModifiers;
         public List<ProjectileSpeedModifier> projectileSpeedModifiers;
 
+        internal List<Essence> essences = new List<Essence>();
+
 
         public override bool IsPlayer => true;
         public override float MaxHealth => MaxHealthModifier.CalculateValue(baseMaxHealth, maxHealthModifiers);
@@ -108,6 +110,16 @@ namespace Dogabeey
 
         public override void Hurt(Entity damageSource, float damage)
         {
+        }
+
+        public void AcquireEssence(Essence essence)
+        {
+            essences.Add(essence);
+            essence.OnEssenceAcquired(this);
+        }
+        public void TickEssences()
+        {
+            essences.ForEach(e => e.OnEssenceTick(this));
         }
     }
 }
