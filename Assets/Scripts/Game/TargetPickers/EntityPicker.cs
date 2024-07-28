@@ -44,7 +44,7 @@ namespace Dogabeey
                 .Select(x => x.GetComponent<Creature>())
                 .Where(x => x != null && x != sourceEntity).ToArray();
             Random.InitState(System.DateTime.Now.Millisecond * sourceEntity.transform.GetHashCode());
-            return entities[Random.Range(0, entities.Length)];
+            return entities.Length > 0 ? entities[Random.Range(0, entities.Length)] : null;
         }
     }
     [System.Serializable]
