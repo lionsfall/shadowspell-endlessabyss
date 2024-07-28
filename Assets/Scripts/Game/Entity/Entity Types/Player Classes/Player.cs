@@ -11,6 +11,9 @@ namespace Dogabeey
 {
     public class Player : Creature
     {
+        public static Player Instance;
+
+
         [Header("Projectile Settings")]
         public Projectile projectilePrefab;
 
@@ -50,6 +53,8 @@ namespace Dogabeey
 
             StartCoroutine(AttackSequence());
             ProjectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+            Instance = this;
         }
 
         private void OnDrawGizmosSelected()
@@ -63,29 +68,14 @@ namespace Dogabeey
             while (true)
             {
                 yield return new WaitForSeconds(AttackRate);
-                if (TryGetClosestEnemy(out EnemyEntity enemy))
+                Creature enemy = targetCreature.GetCreature(this);
+                if (enemy)
                 {
                     Attack(enemy);
                 }
             }
         }
 
-        private bool TryGetClosestEnemy(out EnemyEntity enemy)
-        {
-            enemy = null;
-            float minDistance = Range;
-            List<EnemyEntity> enemies = Physics.OverlapSphere(transform.position, Range).Select(x => x.GetComponent<EnemyEntity>()).Where(x => x != null).ToList();
-            foreach (EnemyEntity e in enemies)
-            {
-                float distance = Vector3.Distance(transform.position, e.transform.position);
-                if (distance <= minDistance)
-                {
-                    minDistance = distance;
-                    enemy = e;
-                }
-            }
-            return enemy != null;
-        }
 
         public override void OnHurt(Entity damageSource, float damage)
         {

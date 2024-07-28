@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 namespace Dogabeey
 {
-    public abstract class Entity : MonoBehaviour
+    public abstract class Entity : SerializedMonoBehaviour
     {
 
         public static List<Entity> entities = new List<Entity>();
@@ -50,6 +51,8 @@ namespace Dogabeey
         public UnityEvent onDeath;
         public UnityEvent onDamage;
         public UnityEvent onAttack;
+        [Space]
+        public CreaturePicker targetCreature;
 
         protected EntityState state;
 

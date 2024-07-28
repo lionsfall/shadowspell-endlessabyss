@@ -1,7 +1,14 @@
-﻿namespace Dogabeey
+﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+namespace Dogabeey
 {
     public class ActionOnClick : ActionBarItem
     {
+        [Header("Action Settings")]
+        public PlayerAction action;
+
         public override float CostMultiplier => 1.0f;
 
         public override bool IsClickable()
@@ -16,8 +23,11 @@
 
         public override void OnClick()
         {
-            CurrencyManager.Instance.AddCurrency(costCurrency.currencyID, -GetCost());
-            CurrentLevel++;
+            if (IsClickable())
+            {
+                CurrencyManager.Instance.AddCurrency(costCurrency.currencyID, -GetCost());
+                action.Invoke(Player.Instance);
+            }
         }
     }
 }

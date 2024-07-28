@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Dogabeey
     /// This is an action bar item which the player can click to perform an action. It can cost any currency. New action bar items can be created by extending this class. 
     /// You can configure conditions which decides when the button will be visible or clickable. 
     /// </summary>
-    public abstract class ActionBarItem : MonoBehaviour
+    public abstract class ActionBarItem : SerializedMonoBehaviour
     {
         public string actionName;
         [Header("References")]

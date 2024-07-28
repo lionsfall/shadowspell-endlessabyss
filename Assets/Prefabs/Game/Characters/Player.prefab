@@ -159,6 +159,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b239298e2cd664ab89f18d038036b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 01010e000000740061007200670065007400430072006500610074007500720065002f00000000012f00000044006f006700610062006500650079002e005000690063006b00520061006e0064006f006d00570069007400680069006e00520061006e00670065002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f0105000000720061006e00670065000000000005
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   baseMaxHealth: 1
   baseDamage: 1
   baseAttackRate: 1
@@ -178,6 +187,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
+  maxHealthModifiers: []
+  damageModifiers: []
+  attackRateModifiers: []
+  rangeModifiers: []
+  speedModifiers: []
+  projectileSpeedModifiers: []
 --- !u!114 &8290870676356346226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 4
-  rotationSpeed: 10
+  rotationSpeed: 0
 --- !u!65 &276404461847055137
 BoxCollider:
   m_ObjectHideFlags: 0

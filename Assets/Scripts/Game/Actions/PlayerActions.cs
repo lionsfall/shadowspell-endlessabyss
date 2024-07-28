@@ -170,4 +170,14 @@ namespace Dogabeey
             player.ProjectileInstance.onTick.Add(action);
         }
     }
+    [System.Serializable]
+    public class FireProjectileAction : PlayerAction
+    {
+        public Projectile projectilePrefab;
+        public CreaturePicker targetPicker;
+        public override void Invoke(Player player)
+        {
+            player.projectilePrefab.FireStandaloneProjectile(player, targetPicker.GetCreature(player));
+        }
+    }
 }
