@@ -36,13 +36,17 @@ namespace Dogabeey
         public ProjectileFlags projectileFlags;
         public float tickTime = 1f;
         public float maxRange;
-        public float uptime => owner.Range / owner.ProjectileSpeed;
+        [Tooltip("Speed multiplier for the projectile. 0 disables the movement entirely and generally should be used together with keepAsOwnerChild")]
+        public float speedMultiplier = 1f;
+        public bool keepAsOwnerChild = false;
+        public virtual float Uptime => owner.Range / (owner.ProjectileSpeed * speedMultiplier);
 
         private Tween movementTween;
 
         private void Start()
         {
-            FireProjectile();
+            InitProjectile();
+            if(Uptime > 0) FireProjectile();
             InvokeRepeating(nameof(OnTick), 0, tickTime);
         }
 
@@ -67,6 +71,18 @@ namespace Dogabeey
             }
         }
 
+        public void InitProjectile()
+        {
+            if (keepAsOwnerChild)
+            {
+                transform.SetParent(owner.transform);
+            }
+            else
+            {
+                transform.SetParent(owner.transform.parent);
+            }
+        }
+
         /// <summary>
         /// Fires the projectile agianst the target. If the target is null, the projectile will be fired in the direction of the owner. If projectile has homing flag, it will follow the target.
         /// </summary>
@@ -78,13 +94,13 @@ namespace Dogabeey
             {
                 // Send projectile towards the target
                 Vector3 towards = target.transform.position - transform.position;
-                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
             else
             {
-                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
@@ -98,13 +114,13 @@ namespace Dogabeey
             {   
                 // Send projectile towards the target
                 Vector3 towards = target.transform.position - transform.position;
-                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
             else
             {
-                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
@@ -124,7 +140,7 @@ namespace Dogabeey
             if (target != null && projectileFlags.HasFlag(ProjectileFlags.Homing))
             {
                 Vector3 towards = target.transform.position - transform.position;
-                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, uptime / Const.Values.PROJECTILE_SPEED)
+                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => Destroy(gameObject));
             }
