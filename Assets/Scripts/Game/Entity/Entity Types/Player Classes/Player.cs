@@ -57,6 +57,8 @@ namespace Dogabeey
             ProjectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             Instance = this;
+
+            InvokeRepeating(nameof(TickEssences), 1f, 1f);
         }
 
         private void OnDrawGizmosSelected()
