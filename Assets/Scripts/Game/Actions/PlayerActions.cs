@@ -1,5 +1,16 @@
+using UnityEngine;
+
 namespace Dogabeey
 {
+    [System.Serializable]
+    public class DebugMessageAction : PlayerAction
+    {
+        public string message;
+        public override void Invoke(Player player)
+        {
+            Debug.Log(message);
+        }
+    }
     [System.Serializable]
     public class HealPlayerAction : PlayerAction
     {

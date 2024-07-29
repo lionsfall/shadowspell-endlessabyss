@@ -22,10 +22,51 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: onAcquired
-      Entry: 6
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Dogabeey.PlayerAction, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|Dogabeey.AddProjectileActionOnFire, Assembly-CSharp
+    - Name: active
+      Entry: 5
+      Data: true
+    - Name: action
+      Entry: 7
+      Data: 2|Dogabeey.DebugMessage, Assembly-CSharp
+    - Name: active
+      Entry: 5
+      Data: true
+    - Name: message
+      Entry: 1
+      Data: qwe
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: onTick
-      Entry: 6
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[Dogabeey.PlayerAction, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
   essenceID: 0
   essenceName: Test Essence

@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Dogabeey
 { 
     public class EssenceController : MonoBehaviour
     {
-        private Essence essence;
-
+        [ReadOnly] public Essence essence;
         public Transform meshRendererParent;
 
         internal MeshRenderer currentRenderer;
@@ -34,6 +34,15 @@ namespace Dogabeey
                     Destroy(currentRenderer);
                 }
                 currentRenderer = Instantiate(essence.essenceMesh, meshRendererParent);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.TryGetComponent(out Player player))
+            {
+                essence.OnEssenceAcquired(player);
+                Destroy(gameObject);
             }
         }
     }

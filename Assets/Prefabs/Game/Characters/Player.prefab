@@ -160,14 +160,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 01010e000000740061007200670065007400430072006500610074007500720065002f00000000012f00000044006f006700610062006500650079002e005000690063006b00520061006e0064006f006d00570069007400680069006e00520061006e00670065002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f0105000000720061006e00670065000000000005
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: targetCreature
+      Entry: 7
+      Data: 0|Dogabeey.PickClosestWithinRange, Assembly-CSharp
+    - Name: range
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
   baseMaxHealth: 1
   baseDamage: 1
   baseAttackRate: 1

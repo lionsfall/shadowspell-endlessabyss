@@ -15,4 +15,13 @@ namespace Dogabeey
             }
         }
     }
+    [System.Serializable]
+    public class DebugMessage : ProjectileAction
+    {
+        public string message;
+        public override void Invoke(Projectile projectile)
+        {
+            Debug.Log(message);
+        }
+    }
 }
