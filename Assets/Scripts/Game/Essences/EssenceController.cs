@@ -41,6 +41,7 @@ namespace Dogabeey
         {
             if(other.TryGetComponent(out Player player))
             {
+                player.AcquireEssence(essence);
                 essence.OnEssenceAcquired(player);
                 Destroy(gameObject);
             }

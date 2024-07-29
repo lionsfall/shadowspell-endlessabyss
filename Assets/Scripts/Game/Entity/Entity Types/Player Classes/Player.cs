@@ -119,7 +119,10 @@ namespace Dogabeey
         }
         public void TickEssences()
         {
-            essences.ForEach(e => e.OnEssenceTick(this));
+            foreach (Essence essence in essences)
+            {
+                essence.OnEssenceTick(this);
+            }
         }
     }
 }

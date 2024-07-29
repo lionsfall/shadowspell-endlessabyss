@@ -29,11 +29,11 @@ namespace Dogabeey
 
         public void OnEssenceAcquired(Player creature)
         {
-            onAcquired.ForEach(action => action.Invoke(creature));
+            onAcquired.ForEach(action => action?.Invoke(creature));
         }
         public void OnEssenceTick(Player creature)
         {
-            onTick.ForEach(a => a.Invoke(creature));
+            onTick.ForEach(action => action?.Invoke(creature));
         }
 
         internal void DropEssence(EssenceController controller, Vector3 position)
