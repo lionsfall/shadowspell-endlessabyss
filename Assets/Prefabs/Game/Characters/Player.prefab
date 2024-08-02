@@ -177,7 +177,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  baseMaxHealth: 1
+  baseMaxHealth: 8
   baseDamage: 1
   baseAttackRate: 1
   baseRange: 10

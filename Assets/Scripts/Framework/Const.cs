@@ -53,6 +53,7 @@ namespace Dogabeey
 
         public struct GameEvents
         {
+            public const string PLAYER_HEALTH_CHANGED = "PLAYER_HEALTH_CHANGED";
             public const string COLLECTIBLE_EARNED = "COLLECTIBLE_EARNED";
             public const string OBJECTIVE_COMPLETED = "OBJECTIVE_COMPLETED";
             public const string OBJECTIVE_FAILED = "OBJECTIVE_FAILED";

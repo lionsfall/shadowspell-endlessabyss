@@ -59,6 +59,7 @@ namespace Dogabeey
             Instance = this;
 
             InvokeRepeating(nameof(TickEssences), 1f, 1f);
+
         }
 
         private void OnDrawGizmosSelected()

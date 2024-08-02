@@ -8,15 +8,15 @@ using UnityEngine;
 public abstract class UIElement : MonoBehaviour
 {
     [ValueDropdown("GetStructElementsAsStrings", AppendNextDrawer = true)]
-    public string fireEvent;
+    public abstract string FireEvent { get; }
 
     private void OnEnable()
     {
-        EventManager.StartListening(fireEvent, OnEvent);
+        EventManager.StartListening(FireEvent, OnEvent);
     }
     private void OnDisable()
     {
-        EventManager.StopListening(fireEvent, OnEvent);
+        EventManager.StopListening(FireEvent, OnEvent);
     }
 
     public void OnEvent(EventParam e)
