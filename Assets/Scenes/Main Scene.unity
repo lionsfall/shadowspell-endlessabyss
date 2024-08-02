@@ -431,6 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304402117}
+  - component: {fileID: 304402118}
   m_Layer: 5
   m_Name: Heart UI
   m_TagString: Untagged
@@ -459,6 +460,23 @@ RectTransform:
   m_AnchoredPosition: {x: -318.20117, y: 35.000015}
   m_SizeDelta: {x: 97.6577, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &304402118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304402116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7850b835bba854bb397260d85bf5c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPossibleHealth: 12
+  totalHeartTransform: {fileID: 1818303735}
+  currentHealthTransform: {fileID: 1714170082}
+  heartContainerPrefab: {fileID: 5042625684514246124, guid: 24232f6dc91661b468b010b6019a0b9c, type: 3}
+  heartPrefab: {fileID: 2756016723567625659, guid: 9893e5434ea204c4da28872986698ca2, type: 3}
 --- !u!114 &307362569 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2883397290344539700, guid: f3e6ca62fb171e14591c17dad45f6d29, type: 3}

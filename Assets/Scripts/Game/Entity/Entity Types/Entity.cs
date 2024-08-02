@@ -56,7 +56,6 @@ namespace Dogabeey
 
         protected EntityState state;
 
-        private float currentHealth;
         private Entity lastDamager;
         private Entity lastAttacked;
         private Entity lastVictim;
@@ -64,9 +63,25 @@ namespace Dogabeey
         public abstract bool IsPlayer { get; }
         public float CurrentHealth
         {
-            get => currentHealth;
-            set => currentHealth = value;
-        }   
+            get =>
+                    PlayerPrefs.GetFloat("Health_" + GetHashCode(), MaxHealth);
+            set
+            {
+                if (value <= 0)
+                {
+                    State = EntityState.Dead;
+                    PlayerPrefs.SetFloat("Health_" + GetHashCode(), 0);
+                }
+                if (value > MaxHealth)
+                {
+                    PlayerPrefs.SetFloat("Health_" + GetHashCode(), MaxHealth);
+                }
+                else
+                {
+                    PlayerPrefs.SetFloat("Health_" + GetHashCode(), value);
+                }
+            }
+        }
         public EntityState State
         {
             get

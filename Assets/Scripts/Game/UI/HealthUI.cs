@@ -31,7 +31,7 @@ namespace Dogabeey
             for (int i = 0; i < maxPossibleHealth; i++)
             {
                 Image heartContainer = Instantiate(heartContainerPrefab, totalHeartTransform);
-                Image heart = Instantiate(heartPrefab, heartContainer.transform);
+                Image heart = Instantiate(heartPrefab, currentHealthTransform.transform);
 
                 heartContainer.gameObject.SetActive(false);
                 heart.gameObject.SetActive(false);
