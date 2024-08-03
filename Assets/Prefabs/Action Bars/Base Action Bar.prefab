@@ -564,8 +564,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionBarItem: {fileID: 0}
   actionBarIcon: {fileID: 7983932361730116957}
-  actionText: {fileID: 0}
-  levelText: {fileID: 6563922469652289156}
+  actionText: {fileID: 6563922469652289156}
+  levelText: {fileID: 0}
   costText: {fileID: 5628338304248941517}
   onClickButton: {fileID: 4319887855089888787}
   canvasGroup: {fileID: 7236742246683191088}
@@ -593,13 +593,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908e4eaab5d2d9a47a59843b8b4e1e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1254264694677176493, guid: 43bb43191f66014428ea0fa2869a6702, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: action
+      Entry: 7
+      Data: 0|Dogabeey.FireProjectileAction, Assembly-CSharp
+    - Name: active
+      Entry: 5
+      Data: true
+    - Name: projectilePrefab
+      Entry: 10
+      Data: 0
+    - Name: targetPicker
+      Entry: 7
+      Data: 1|Dogabeey.PickClosestWithinRange, Assembly-CSharp
+    - Name: range
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   actionName: 
   actionBarIcon: {fileID: 21300000, guid: 784ec009898a347da85c11fe8c261b09, type: 3}
   onClickButton: {fileID: 4319887855089888787}
   costCurrency: {fileID: 11400000, guid: df89d50f797990447a2175706ce22e1a, type: 2}
   baseCost: 100
-  costIncrement: 50
-  costAcceleration: 10
+  costIncrement: 0
+  costAcceleration: 0
   visibilityCheckInterval: 0.1
   clickabilityCheckInterval: 0.1
 --- !u!1 &6176062901031853813
