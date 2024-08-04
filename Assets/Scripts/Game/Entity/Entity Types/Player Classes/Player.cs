@@ -74,6 +74,19 @@ namespace Dogabeey
 
         public string SaveId => "Player";
 
+        private void OnEnable()
+        {
+            EventManager.StartListening(Const.GameEvents.PLAYER_ENTERED_ROOM, OnEnteringNewRoom);
+        }
+        private void OnDisable()
+        {
+            EventManager.StopListening(Const.GameEvents.PLAYER_ENTERED_ROOM, OnEnteringNewRoom);
+        }
+        public void OnEnteringNewRoom(EventParam e)
+        {
+            CurrentMana += ManaRegen;
+        }
+
         private void Awake()
         {
 
@@ -113,7 +126,6 @@ namespace Dogabeey
             }
         }
 
-
         public override void OnHurt(Entity damageSource, float damage)
         {
             base.OnHurt(damageSource, damage);
@@ -130,7 +142,6 @@ namespace Dogabeey
         {
             base.OnAttack(target);
         }
-
         public override void Attack(Entity target)
         {
             if (projectilePrefab != null)
@@ -142,12 +153,10 @@ namespace Dogabeey
                 p.gameObject.SetActive(true);
             }
         }
-
         public override void Hurt(Entity damageSource, float damage)
         {
 
         }
-
         public void AcquireEssence(Essence essence)
         {
             if(!essence.executeAcquireEffectOnly) essences.Add(essence);
