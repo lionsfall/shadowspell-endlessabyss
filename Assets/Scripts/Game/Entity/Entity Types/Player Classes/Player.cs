@@ -12,6 +12,19 @@ namespace Dogabeey
 {
     public class Player : Creature
     {
+        [System.Serializable]
+        public class EssenceInstance
+        {             
+            public Essence essence;
+            public int remainingLifeSpan;
+
+            public EssenceInstance(Essence essence)
+            {
+                this.essence = essence;
+                remainingLifeSpan = essence.lifeSpan;
+            }
+        }
+
         public static Player Instance;
 
         [BoxGroup("Base Stats")]
@@ -58,7 +71,7 @@ namespace Dogabeey
         public List<SpeedModifier> speedModifiers;
         public List<ProjectileSpeedModifier> projectileSpeedModifiers;
 
-        internal List<Essence> essences = new List<Essence>();
+        internal List<EssenceInstance> essences = new List<EssenceInstance>();
 
         private float currentMana;
 
@@ -85,6 +98,7 @@ namespace Dogabeey
         public void OnEnteringNewRoom(EventParam e)
         {
             CurrentMana += ManaRegen;
+
         }
 
         private void Awake()
@@ -159,14 +173,15 @@ namespace Dogabeey
         }
         public void AcquireEssence(Essence essence)
         {
-            if(!essence.executeAcquireEffectOnly) essences.Add(essence);
+
+            if(!essence.executeAcquireEffectOnly) essences.Add(new EssenceInstance(essence));
             essence.OnEssenceAcquired(this);
         }
         public void TickEssences()
         {
-            foreach (Essence essence in essences)
+            foreach (EssenceInstance essenceInstance in essences)
             {
-                essence.OnEssenceTick(this);
+                essenceInstance.essence.OnEssenceTick(this);
             }
         }
     }

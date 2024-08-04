@@ -36,6 +36,7 @@ namespace Dogabeey
                 currentRenderer = Instantiate(essence.essenceMesh, meshRendererParent);
             }
         }
+        
 
         private void OnTriggerEnter(Collider other)
         {
