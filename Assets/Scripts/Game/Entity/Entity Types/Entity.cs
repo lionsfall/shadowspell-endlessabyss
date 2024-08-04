@@ -40,11 +40,17 @@ namespace Dogabeey
     }
     public abstract class Creature : Entity
     {
+        [BoxGroup("Base Stats")]
         public float baseMaxHealth;
+        [BoxGroup("Base Stats")]
         public float baseDamage;
+        [BoxGroup("Base Stats")]
         public float baseAttackRate;
+        [BoxGroup("Base Stats")]
         public float baseRange;
+        [BoxGroup("Base Stats")]
         public float baseSpeed;
+        [BoxGroup("Base Stats")]
         public float baseProjectileSpeed;
         [Space]
         public UnityEvent onHurt;

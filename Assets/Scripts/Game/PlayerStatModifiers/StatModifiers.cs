@@ -36,8 +36,42 @@ namespace Dogabeey
             {
                 percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
             }
-            if (flat.Count > 0) 
-            { 
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
+        }
+    }
+    [System.Serializable]
+    public class MaxManaModifier : StatModifier
+    {
+        public MaxManaModifier(float value, ModifierType type) : base(value, type)
+        {
+        }
+        public static float CalculateValue(float baseValue, List<MaxManaModifier> stats)
+        {
+            List<MaxManaModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<MaxManaModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<MaxManaModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
+
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
                 flatValue = flat.Select(v => v.value).Sum();
             }
             if (percentPostFlat.Count > 0)

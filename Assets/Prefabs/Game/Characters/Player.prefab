@@ -195,8 +195,10 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
+  baseMaxMana: 8
   projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
   maxHealthModifiers: []
+  maxManaModifiers: []
   damageModifiers: []
   attackRateModifiers: []
   rangeModifiers: []

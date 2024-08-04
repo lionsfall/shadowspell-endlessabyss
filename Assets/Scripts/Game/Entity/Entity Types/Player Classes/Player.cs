@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 namespace Dogabeey
 {
@@ -13,6 +14,8 @@ namespace Dogabeey
     {
         public static Player Instance;
 
+        [BoxGroup("Base Stats")]
+        public float baseMaxMana;
 
         [Header("Projectile Settings")]
         public Projectile projectilePrefab;
@@ -25,6 +28,7 @@ namespace Dogabeey
 
         [Header("Player Stats")]
         public List<MaxHealthModifier> maxHealthModifiers;
+        public List<MaxManaModifier> maxManaModifiers;
         public List<DamageModifier> damageModifiers;
         public List<AttackRateModifier> attackRateModifiers;
         public List<RangeModifier> rangeModifiers;
@@ -36,6 +40,7 @@ namespace Dogabeey
 
         public override bool IsPlayer => true;
         public override float MaxHealth => MaxHealthModifier.CalculateValue(baseMaxHealth, maxHealthModifiers);
+        public float MaxMana => MaxManaModifier.CalculateValue(baseMaxMana, maxManaModifiers);
         public override float Damage => DamageModifier.CalculateValue(baseDamage, damageModifiers);
         public override float AttackRate => AttackRateModifier.CalculateValue(baseAttackRate, attackRateModifiers);
         public override float Range => RangeModifier.CalculateValue(baseRange, rangeModifiers);
@@ -113,6 +118,7 @@ namespace Dogabeey
 
         public override void Hurt(Entity damageSource, float damage)
         {
+
         }
 
         public void AcquireEssence(Essence essence)
