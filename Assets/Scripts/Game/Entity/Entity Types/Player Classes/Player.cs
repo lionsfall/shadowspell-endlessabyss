@@ -99,6 +99,16 @@ namespace Dogabeey
         {
             CurrentMana += ManaRegen;
 
+            // Reduce life span of essences by 1. If any reaches zero, execute on expire effect and remove from list.
+            for (int i = essences.Count - 1; i >= 0; i--)
+            {
+                essences[i].remainingLifeSpan--;
+                if (essences[i].remainingLifeSpan <= 0)
+                {
+                    essences[i].essence.OnEssenceExpire(this);
+                    essences.RemoveAt(i);
+                }
+            }
         }
 
         private void Awake()
