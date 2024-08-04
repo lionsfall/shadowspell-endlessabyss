@@ -1096,6 +1096,14 @@ MonoBehaviour:
   - {fileID: 324316242}
   - {fileID: 959924745}
   - {fileID: 1456014565}
+  essenceLifeTexts:
+  - {fileID: 1698356856}
+  - {fileID: 1025682867}
+  - {fileID: 221842578}
+  - {fileID: 1753118208}
+  - {fileID: 1814469833}
+  - {fileID: 733180703}
+  - {fileID: 2127789609}
 --- !u!1 &407152367
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ namespace Dogabeey
     public class EssenceUI : UIElement
     {
         public List<Image> essenceImages;
+        public List<TMP_Text> essenceLifeTexts;
 
         internal Player player;
 
@@ -33,10 +35,12 @@ namespace Dogabeey
                 {
                     essenceImages[i].gameObject.SetActive(true);
                     essenceImages[i].sprite = player.essences[i].essence.essenceIcon;
+                    essenceLifeTexts[i].text = player.essences[i].remainingLifeSpan.ToString();
                 }
                 else
                 {
                     essenceImages[i].gameObject.SetActive(false);
+                    essenceLifeTexts[i].text = "";
                 }
             }
         }
