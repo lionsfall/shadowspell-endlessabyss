@@ -32,7 +32,7 @@ namespace Dogabeey
                 if (i < player.essences.Count)
                 {
                     essenceImages[i].gameObject.SetActive(true);
-                    essenceImages[i].sprite = player.essences[i].essenceIcon;
+                    essenceImages[i].sprite = player.essences[i].essence.essenceIcon;
                 }
                 else
                 {
