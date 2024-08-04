@@ -259,6 +259,41 @@ namespace Dogabeey
             return baseValue;
         }
     }
+    [System.Serializable]
+    public class ManaRegenModifier : StatModifier
+    {
+        public ManaRegenModifier(float value, ModifierType type) : base(value, type)
+        {
+        }
+
+        public static float CalculateValue(float baseValue, List<ManaRegenModifier> stats)
+        {
+            List<ManaRegenModifier> percentPreFlat = stats.Where(x => x.type == ModifierType.PercentPreFlat).ToList();
+            List<ManaRegenModifier> flat = stats.Where(x => x.type == ModifierType.Flat).ToList();
+            List<ManaRegenModifier> percentPostFlat = stats.Where(x => x.type == ModifierType.PercentPostFlat).ToList();
+            float percentPreFlatValue = 1;
+            float flatValue = 0;
+            float percentPostFlatValue = 1;
+
+            if (percentPreFlat.Count > 0)
+            {
+                percentPreFlatValue = percentPreFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            if (flat.Count > 0)
+            {
+                flatValue = flat.Select(v => v.value).Sum();
+            }
+            if (percentPostFlat.Count > 0)
+            {
+                percentPostFlatValue = percentPostFlat.Select(v => v.value).Aggregate((a, x) => a * x);
+            }
+            baseValue *= percentPreFlatValue;
+            baseValue += flatValue;
+            baseValue *= percentPostFlatValue;
+
+            return baseValue;
+        }
+    }
     public enum ModifierType
     {
         PercentPreFlat,

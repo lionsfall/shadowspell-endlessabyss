@@ -92,6 +92,24 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
+    public class AddMaxManaModifier : PlayerAction
+    {
+        public MaxManaModifier modifier;
+        public override void Invoke(Player player)
+        {
+            player.maxManaModifiers.Add(modifier);
+        }
+    }
+    [System.Serializable]
+    public class AddManaRegenModifier : PlayerAction
+    {
+        public ManaRegenModifier modifier;
+        public override void Invoke(Player player)
+        {
+            player.manaRegenModifiers.Add(modifier);
+        }
+    }
+    [System.Serializable]
     public class RemoveDamageModifier : PlayerAction
     {
         public DamageModifier modifier;

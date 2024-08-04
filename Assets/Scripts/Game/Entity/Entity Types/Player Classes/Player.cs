@@ -16,6 +16,8 @@ namespace Dogabeey
 
         [BoxGroup("Base Stats")]
         public float baseMaxMana;
+        [BoxGroup("Base Stats")]
+        public float baseManaRegen;
 
         [Header("Projectile Settings")]
         public Projectile projectilePrefab;
@@ -49,6 +51,7 @@ namespace Dogabeey
         [Header("Player Stat Modifiers")]
         public List<MaxHealthModifier> maxHealthModifiers;
         public List<MaxManaModifier> maxManaModifiers;
+        public List<ManaRegenModifier> manaRegenModifiers;
         public List<DamageModifier> damageModifiers;
         public List<AttackRateModifier> attackRateModifiers;
         public List<RangeModifier> rangeModifiers;
@@ -62,6 +65,7 @@ namespace Dogabeey
         public override bool IsPlayer => true;
         public override float MaxHealth => MaxHealthModifier.CalculateValue(baseMaxHealth, maxHealthModifiers);
         public float MaxMana => MaxManaModifier.CalculateValue(baseMaxMana, maxManaModifiers);
+        public float ManaRegen => ManaRegenModifier.CalculateValue(baseManaRegen, manaRegenModifiers);
         public override float Damage => DamageModifier.CalculateValue(baseDamage, damageModifiers);
         public override float AttackRate => AttackRateModifier.CalculateValue(baseAttackRate, attackRateModifiers);
         public override float Range => RangeModifier.CalculateValue(baseRange, rangeModifiers);
