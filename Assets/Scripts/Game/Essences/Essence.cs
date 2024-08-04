@@ -18,6 +18,8 @@ namespace Dogabeey
         }
 
         public int essenceID;
+        [Tooltip("If true, the essence only execute on acquire effect and won't be added to player's essence list. Used for basic essences like heart pickups.")]
+        public bool executeAcquireEffectOnly;
         public string essenceName;
         public string essenceDescription;
         public Sprite essenceIcon;

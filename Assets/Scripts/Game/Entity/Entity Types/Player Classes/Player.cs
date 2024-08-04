@@ -117,7 +117,7 @@ namespace Dogabeey
 
         public void AcquireEssence(Essence essence)
         {
-            essences.Add(essence);
+            if(!essence.executeAcquireEffectOnly) essences.Add(essence);
             essence.OnEssenceAcquired(this);
         }
         public void TickEssences()

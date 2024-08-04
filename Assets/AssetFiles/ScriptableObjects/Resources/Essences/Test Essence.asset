@@ -35,7 +35,16 @@ MonoBehaviour:
       Entry: 5
       Data: true
     - Name: action
+      Entry: 7
+      Data: 2|Dogabeey.DebugMessage, Assembly-CSharp
+    - Name: active
+      Entry: 5
+      Data: true
+    - Name: message
       Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -48,14 +57,14 @@ MonoBehaviour:
       Data: 
     - Name: onTick
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[Dogabeey.PlayerAction, Assembly-CSharp]],
+      Data: 3|System.Collections.Generic.List`1[[Dogabeey.PlayerAction, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|Dogabeey.DebugMessageAction, Assembly-CSharp
+      Data: 4|Dogabeey.DebugMessageAction, Assembly-CSharp
     - Name: active
       Entry: 5
       Data: true
@@ -72,6 +81,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   essenceID: 0
+  executeAcquireEffectOnly: 0
   essenceName: Test Essence
   essenceDescription: This is a test essence.
   essenceIcon: {fileID: 21300000, guid: b7b4dcc8dbf50994b83870757f2330bb, type: 3}
