@@ -25,8 +25,28 @@ namespace Dogabeey
             get;
             set;
         }
+        public float CurrentMana
+        {
+            get =>
+                    PlayerPrefs.GetFloat("Mana_" + GetHashCode(), MaxMana);
+            set
+            {
+                if (value <= 0)
+                {
+                    PlayerPrefs.SetFloat("Mana_" + GetHashCode(), 0);
+                }
+                if (value > MaxMana)
+                {
+                    PlayerPrefs.SetFloat("Mana_" + GetHashCode(), MaxMana);
+                }
+                else
+                {
+                    PlayerPrefs.SetFloat("Mana_" + GetHashCode(), value);
+                }
+            }
+        }
 
-        [Header("Player Stats")]
+        [Header("Player Stat Modifiers")]
         public List<MaxHealthModifier> maxHealthModifiers;
         public List<MaxManaModifier> maxManaModifiers;
         public List<DamageModifier> damageModifiers;
@@ -37,6 +57,7 @@ namespace Dogabeey
 
         internal List<Essence> essences = new List<Essence>();
 
+        private float currentMana;
 
         public override bool IsPlayer => true;
         public override float MaxHealth => MaxHealthModifier.CalculateValue(baseMaxHealth, maxHealthModifiers);
@@ -57,6 +78,8 @@ namespace Dogabeey
         protected override void Start()
         {
             base.Start();
+            CurrentMana = MaxMana;
+            
 
             StartCoroutine(AttackSequence());
             ProjectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
