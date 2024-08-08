@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Dogabeey
 {
@@ -13,7 +14,7 @@ namespace Dogabeey
 
         internal Player player;
 
-        public override string FireEvent => Const.GameEvents.PLAYER_HEALTH_CHANGED;
+        public override string FireEvent => Const.GameEvents.PLAYER_ESSENCES_CHANGED;
 
         private IEnumerator Start()
         {
@@ -24,8 +25,7 @@ namespace Dogabeey
         }
         private void Update()
         {
-            if(Player.Instance)
-                DrawUI();
+            
         }
         public override void DrawUI()
         {

@@ -109,6 +109,7 @@ namespace Dogabeey
                     essences.RemoveAt(i);
                 }
             }
+            EventManager.TriggerEvent(Const.GameEvents.PLAYER_ESSENCES_CHANGED);
         }
 
         private void Awake()
@@ -184,7 +185,11 @@ namespace Dogabeey
         public void AcquireEssence(Essence essence)
         {
 
-            if(!essence.executeAcquireEffectOnly) essences.Add(new EssenceInstance(essence));
+            if (!essence.executeAcquireEffectOnly)
+            {
+                essences.Add(new EssenceInstance(essence));
+                EventManager.TriggerEvent(Const.GameEvents.PLAYER_ESSENCES_CHANGED);
+            }
             essence.OnEssenceAcquired(this);
         }
         public void TickEssences()
