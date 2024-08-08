@@ -319,4 +319,50 @@ namespace Dogabeey
             player.onKill.AddListener(() => action.Invoke(player));
         }
     }
+    [System.Serializable]
+    public class RemoveOnHurtAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onHurt.RemoveListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class RemoveOnDeathAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onDeath.RemoveListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class RemoveOnDamageAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onDamage.RemoveListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class RemoveOnAttackAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onAttack.RemoveListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class RemoveOnKillAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onKill.RemoveListener(() => action.Invoke(player));
+        }
+    }
+
 }
