@@ -17,6 +17,7 @@ namespace Dogabeey
         public struct Values
         {
             public const float TICK_TIME = 1f;
+            public const float INVINCIBILITY_FRAME = 1f;
             public const float PROJECTILE_SPEED = 4f;
         }
 

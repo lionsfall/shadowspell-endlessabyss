@@ -196,9 +196,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   baseMaxMana: 8
+  baseManaRegen: 0
   projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
+  playerMesh: {fileID: 7991314102335484555}
   maxHealthModifiers: []
   maxManaModifiers: []
+  manaRegenModifiers: []
   damageModifiers: []
   attackRateModifiers: []
   rangeModifiers: []

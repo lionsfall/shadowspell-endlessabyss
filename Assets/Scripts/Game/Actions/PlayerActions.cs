@@ -263,4 +263,14 @@ namespace Dogabeey
             CurrencyManager.Instance.AddCurrency(currency.currencyID, amount);
         }
     }
+    [System.Serializable]
+    public class  MassDamageAction : PlayerAction
+    {
+        public float damage;
+        public float radius;
+        public override void Invoke(Player player)
+        {
+            player.MassDamage(damage, radius);
+        }
+    }
 }

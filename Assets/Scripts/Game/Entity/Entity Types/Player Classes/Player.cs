@@ -61,6 +61,8 @@ namespace Dogabeey
             }
         }
 
+        [Header("Player References")]
+        public MeshRenderer playerMesh;
         [Header("Player Stat Modifiers")]
         public List<MaxHealthModifier> maxHealthModifiers;
         public List<MaxManaModifier> maxManaModifiers;
@@ -136,6 +138,11 @@ namespace Dogabeey
             InvokeRepeating(nameof(TickEssences), 1f, 1f);
 
         }
+        private void Update()
+        {
+            // Quickly turn on-off player's mesh renderer based on invincibility duration.
+            playerMesh.enabled = !IsInvincible || Time.time % 0.2f > 0.1f;
+        }
 
         private void OnDrawGizmosSelected()
         {
@@ -202,6 +209,19 @@ namespace Dogabeey
             foreach (EssenceInstance essenceInstance in essences)
             {
                 essenceInstance.essence.OnEssenceTick(this);
+            }
+        }
+
+        internal void MassDamage(float damage, float radius)
+        {
+            // Damages every mob around player in a radius by given damage.
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.TryGetComponent(out Creature creature))
+                {
+                    creature.Hurt(this, damage);
+                }
             }
         }
     }

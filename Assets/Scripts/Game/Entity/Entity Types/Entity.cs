@@ -118,6 +118,12 @@ namespace Dogabeey
         public abstract float Speed { get; }
         public abstract float ProjectileSpeed { get; }
 
+        protected virtual float InvincibilityDuration => 0.1f;
+        
+        internal bool IsInvincible => Time.time - lastHurtTime < InvincibilityDuration;
+
+        private float lastHurtTime;
+
         protected override void Start()
         {
             base.Start();
@@ -133,6 +139,7 @@ namespace Dogabeey
         {
             onHurt.Invoke();
             lastDamager = damageSource;
+            lastHurtTime = Time.time;
         }
         /// <summary>
         /// When the entity dies.
