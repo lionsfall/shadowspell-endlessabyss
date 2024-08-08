@@ -61,7 +61,7 @@ namespace Dogabeey
                 if((owner is Player && entity is EnemyEntity) || (owner is EnemyEntity && entity is Player))
                 {
                     OnHit();
-                    entity.Hurt(owner, owner.Damage);
+                    entity.Hurt(owner, owner.Damage, DamageType.Projectile);
                     //Destroy the projectile if has no piercing flag
                     if (!projectileFlags.HasFlag(ProjectileFlags.PiercesEnemy))
                     {

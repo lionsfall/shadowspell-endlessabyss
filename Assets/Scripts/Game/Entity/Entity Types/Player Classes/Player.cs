@@ -190,9 +190,9 @@ namespace Dogabeey
                 p.gameObject.SetActive(true);
             }
         }
-        public override void Hurt(Entity damageSource, float damage)
+        public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
-
+            base.Hurt(damageSource, damage, damageType); 
         }
         public void AcquireEssence(Essence essence)
         {
@@ -220,7 +220,7 @@ namespace Dogabeey
             {
                 if (collider.TryGetComponent(out Creature creature))
                 {
-                    creature.Hurt(this, damage);
+                    creature.Hurt(this, damage, DamageType.None);
                 }
             }
         }

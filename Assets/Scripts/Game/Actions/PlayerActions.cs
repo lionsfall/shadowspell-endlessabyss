@@ -49,9 +49,10 @@ namespace Dogabeey
     public class DamagePlayerAction : PlayerAction
     {
         public float amount;
+        public DamageType damageType;
         public override void Invoke(Player player)
         {
-            player.Hurt(player, amount);
+            player.Hurt(player, amount, damageType);
         }
     }
     [System.Serializable]

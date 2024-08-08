@@ -139,7 +139,6 @@ namespace Dogabeey
         {
             onHurt.Invoke();
             lastDamager = damageSource;
-            lastHurtTime = Time.time;
         }
         /// <summary>
         /// When the entity dies.
@@ -173,10 +172,11 @@ namespace Dogabeey
         }
 
         public abstract void Attack(Entity target);
-        public virtual void Hurt(Entity damageSource, float damage)
+        public virtual void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
             OnHurt(damageSource, damage);
             CurrentHealth -= damage;
+            lastHurtTime = Time.time;
         }
 
         internal virtual void Heal(float healAmount)
@@ -212,5 +212,13 @@ namespace Dogabeey
                 weightedPool[UnityEngine.Random.Range(0, weightedPool.Count)].DropEssence(essencePrefab, transform.position);
             }
         }
+    }
+
+    public enum DamageType
+    {
+        None,
+        Contact,
+        Projectile,
+        Magic
     }
 }
