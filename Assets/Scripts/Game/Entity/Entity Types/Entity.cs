@@ -57,6 +57,7 @@ namespace Dogabeey
         public UnityEvent onDeath;
         public UnityEvent onDamage;
         public UnityEvent onAttack;
+        public UnityEvent onKill;
         [Space]
         public CreaturePicker targetCreature;
 

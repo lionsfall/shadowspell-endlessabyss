@@ -274,4 +274,49 @@ namespace Dogabeey
             player.MassDamage(damage, radius);
         }
     }
+    [System.Serializable]
+    public class AddOnHurtAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onHurt.AddListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class AddOnDeathAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onDeath.AddListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class AddOnDamageAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onDamage.AddListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class AddOnAttackAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onAttack.AddListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class AddOnKillAction : PlayerAction
+    {
+        public PlayerAction action;
+        public override void Invoke(Player player)
+        {
+            player.onKill.AddListener(() => action.Invoke(player));
+        }
+    }
 }

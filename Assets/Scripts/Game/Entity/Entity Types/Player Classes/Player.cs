@@ -192,6 +192,7 @@ namespace Dogabeey
         }
         public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
+            
             base.Hurt(damageSource, damage, damageType); 
         }
         public void AcquireEssence(Essence essence)
