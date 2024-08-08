@@ -17,9 +17,9 @@ namespace Dogabeey
             throw new System.NotImplementedException();
         }
 
-        public override void Hurt(Entity damageSource, float damage)
+        public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
-            base.Hurt(damageSource, damage);
+            base.Hurt(damageSource, damage, damageType);
         }
 
         public override void OnDeath(Entity killer)

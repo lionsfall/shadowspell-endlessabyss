@@ -24,6 +24,12 @@ namespace Dogabeey
                 remainingLifeSpan = essence.lifeSpan;
             }
         }
+        [System.Serializable]
+        public class CountedDamageImmunity
+        {
+            public DamageType damageType;
+            public float count;
+        }
 
         public static Player Instance;
 
@@ -31,8 +37,10 @@ namespace Dogabeey
         public float baseMaxMana;
         [BoxGroup("Base Stats")]
         public float baseManaRegen;
+        [BoxGroup("Misc")]
+        public List<CountedDamageImmunity> damageImmunities;
 
-        [Header("Projectile Settings")]
+        [BoxGroup("Projectile Settings")]
         public Projectile projectilePrefab;
 
         internal Projectile ProjectileInstance
@@ -63,14 +71,21 @@ namespace Dogabeey
 
         [Header("Player References")]
         public MeshRenderer playerMesh;
-        [Header("Player Stat Modifiers")]
+        [BoxGroup("Player Stat Modifiers")]
         public List<MaxHealthModifier> maxHealthModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<MaxManaModifier> maxManaModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<ManaRegenModifier> manaRegenModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<DamageModifier> damageModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<AttackRateModifier> attackRateModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<RangeModifier> rangeModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<SpeedModifier> speedModifiers;
+        [BoxGroup("Player Stat Modifiers")]
         public List<ProjectileSpeedModifier> projectileSpeedModifiers;
 
         internal List<EssenceInstance> essences = new List<EssenceInstance>();
@@ -223,6 +238,41 @@ namespace Dogabeey
                 {
                     creature.Hurt(this, damage, DamageType.None);
                 }
+            }
+        }
+
+        internal void AddImmunity(DamageType damageType, float count)
+        {
+            CountedDamageImmunity immunity = damageImmunities.FirstOrDefault(i => i.damageType == damageType);
+            if (immunity == null)
+            {
+                immunity = new CountedDamageImmunity
+                {
+                    damageType = damageType
+                };
+                damageImmunities.Add(immunity);
+            }
+            immunity.count += count;
+        }
+        internal void RemoveImmunityCount(DamageType damageType, float count)
+        {
+            CountedDamageImmunity immunity = damageImmunities.FirstOrDefault(i => i.damageType == damageType);
+            if (immunity != null)
+            {
+                immunity.count -= count;
+                if (immunity.count <= 0)
+                {
+                    damageImmunities.Remove(immunity);
+                }
+            }
+        }
+
+        internal void RemoveImmunity(DamageType damageType)
+        {
+            CountedDamageImmunity immunity = damageImmunities.FirstOrDefault(i => i.damageType == damageType);
+            if (immunity != null)
+            {
+                damageImmunities.Remove(immunity);
             }
         }
     }

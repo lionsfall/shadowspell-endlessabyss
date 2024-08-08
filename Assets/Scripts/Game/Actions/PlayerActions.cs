@@ -265,7 +265,7 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
-    public class  MassDamageAction : PlayerAction
+    public class MassDamageAction : PlayerAction
     {
         public float damage;
         public float radius;
@@ -362,6 +362,26 @@ namespace Dogabeey
         public override void Invoke(Player player)
         {
             player.onKill.RemoveListener(() => action.Invoke(player));
+        }
+    }
+    [System.Serializable]
+    public class AddImmunityCount : PlayerAction
+    {
+        public DamageType damageType;
+        public int count;
+        public override void Invoke(Player player)
+        {
+            player.AddImmunity(damageType, count);
+        }
+    }
+    [System.Serializable]
+    public class RemoveImmunityCount : PlayerAction
+    {
+        public DamageType damageType;
+        public int count;
+        public override void Invoke(Player player)
+        {
+            player.RemoveImmunityCount(damageType, count);
         }
     }
 

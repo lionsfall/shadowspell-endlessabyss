@@ -16,7 +16,7 @@ namespace Dogabeey
         {
             if (!active) return;
 
-            entity.Hurt(entity, damageAmount);
+            entity.Hurt(entity, damageAmount, DamageType.None);
         }
     }
     [System.Serializable]

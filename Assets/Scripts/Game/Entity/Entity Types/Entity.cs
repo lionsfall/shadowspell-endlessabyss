@@ -53,12 +53,17 @@ namespace Dogabeey
         [BoxGroup("Base Stats")]
         public float baseProjectileSpeed;
         [Space]
+        [BoxGroup("Events")]
         public UnityEvent onHurt;
+        [BoxGroup("Events")]
         public UnityEvent onDeath;
+        [BoxGroup("Events")]
         public UnityEvent onDamage;
+        [BoxGroup("Events")]
         public UnityEvent onAttack;
+        [BoxGroup("Events")]
         public UnityEvent onKill;
-        [Space]
+        [BoxGroup("Misc")]
         public CreaturePicker targetCreature;
 
         protected EntityState state;
