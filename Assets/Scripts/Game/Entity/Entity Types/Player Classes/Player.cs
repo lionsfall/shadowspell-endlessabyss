@@ -105,11 +105,16 @@ namespace Dogabeey
                 essences[i].remainingLifeSpan--;
                 if (essences[i].remainingLifeSpan <= 0)
                 {
-                    essences[i].essence.OnEssenceExpire(this);
-                    essences.RemoveAt(i);
+                    RemoveEssence(i);
                 }
             }
             EventManager.TriggerEvent(Const.GameEvents.PLAYER_ESSENCES_CHANGED);
+        }
+
+        public void RemoveEssence(int i)
+        {
+            essences[i].essence.OnEssenceExpire(this);
+            essences.RemoveAt(i);
         }
 
         private void Awake()

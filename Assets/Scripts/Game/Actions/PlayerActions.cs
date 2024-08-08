@@ -29,6 +29,23 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
+    public class RestoreManaAction : PlayerAction
+    {
+        public float amount;
+        public override void Invoke(Player player)
+        {
+            player.CurrentMana += amount;
+        }
+    }
+    [System.Serializable]
+    public class FullManaAction : PlayerAction
+    {
+        public override void Invoke(Player player)
+        {
+            player.CurrentMana = player.MaxMana;
+        }
+    }
+    [System.Serializable]
     public class DamagePlayerAction : PlayerAction
     {
         public float amount;
@@ -207,6 +224,43 @@ namespace Dogabeey
         public override void Invoke(Player player)
         {
             player.projectilePrefab.FireStandaloneProjectile(player, targetPicker.GetCreature(player));
+        }
+    }
+    [System.Serializable]
+    public class AddEssenceAction : PlayerAction
+    {
+        public Essence essence;
+        public override void Invoke(Player player)
+        {
+            player.AcquireEssence(essence);
+        }
+    }
+    [System.Serializable]
+    public class RemoveEssenceAction : PlayerAction
+    {
+        public Essence essence;
+        public override void Invoke(Player player)
+        {
+            player.RemoveEssence(essence.essenceID);
+        }
+    }
+    [System.Serializable]
+    public class AddCoin : PlayerAction
+    {
+        public int amount;
+        public override void Invoke(Player player)
+        {
+            CurrencyManager.Instance.AddCoin(amount);
+        }
+    }
+    [System.Serializable]
+    public class AddCurrencyAction : PlayerAction
+    {
+        public CurrencyModel currency;
+        public int amount;
+        public override void Invoke(Player player)
+        {
+            CurrencyManager.Instance.AddCurrency(currency.currencyID, amount);
         }
     }
 }
