@@ -207,8 +207,17 @@ namespace Dogabeey
         }
         public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
-            
-            base.Hurt(damageSource, damage, damageType); 
+            // If has counted immunity against this damage type, don't execute the hurt and Remove its stack by 1.
+            CountedDamageImmunity immunity = damageImmunities.FirstOrDefault(i => i.damageType == damageType);
+            if (immunity != null)
+            {
+                RemoveImmunityCount(damageType, 1);
+                return;
+            }
+            else
+            {
+                base.Hurt(damageSource, damage, damageType);
+            }
         }
         public void AcquireEssence(Essence essence)
         {

@@ -384,5 +384,14 @@ namespace Dogabeey
             player.RemoveImmunityCount(damageType, count);
         }
     }
+    [System.Serializable]
+    public class RemoveImmunity : PlayerAction
+    {
+        public DamageType damageType;
+        public override void Invoke(Player player)
+        {
+            player.RemoveImmunity(damageType);
+        }
+    }
 
 }
