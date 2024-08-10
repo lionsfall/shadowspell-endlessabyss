@@ -222,7 +222,7 @@ namespace Dogabeey
         public void AcquireEssence(Essence essence)
         {
 
-            if (!essence.executeAcquireEffectOnly)
+            if (!essence.acquireEffectOnly)
             {
                 essences.Add(new EssenceInstance(essence));
                 EventManager.TriggerEvent(Const.GameEvents.PLAYER_ESSENCES_CHANGED);
@@ -243,7 +243,7 @@ namespace Dogabeey
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
             foreach (Collider collider in colliders)
             {
-                if (collider.TryGetComponent(out Creature creature))
+                if (collider.TryGetComponent(out EnemyEntity creature))
                 {
                     creature.Hurt(this, damage, DamageType.None);
                 }

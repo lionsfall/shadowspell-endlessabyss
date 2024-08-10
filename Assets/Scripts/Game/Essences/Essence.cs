@@ -10,6 +10,8 @@ namespace Dogabeey
     [CreateAssetMenu(fileName = "New Essence", menuName = "Scriptable Objects/New Essence...")]
     public class Essence : SerializedScriptableObject
     {
+        private bool AcquireEffectOnly() => acquireEffectOnly;
+
         [System.Serializable]
         public class EssenceDrop
         {
@@ -19,7 +21,8 @@ namespace Dogabeey
 
         public int essenceID;
         [Tooltip("If true, the essence only execute on acquire effect and won't be added to player's essence list. Used for basic essences like heart pickups.")]
-        public bool executeAcquireEffectOnly;
+        public bool acquireEffectOnly;
+        [HideIf(nameof(AcquireEffectOnly))]
         public int lifeSpan;
         [Range(0, 4)]
         public int quality;
@@ -29,7 +32,9 @@ namespace Dogabeey
         public MeshRenderer essenceMesh;
         [Space]
         public List<PlayerAction> onAcquired;
+        [HideIf(nameof(AcquireEffectOnly))]
         public List<PlayerAction> onTick;
+        [HideIf(nameof(AcquireEffectOnly))]
         public List<PlayerAction> onExpire;
 
 

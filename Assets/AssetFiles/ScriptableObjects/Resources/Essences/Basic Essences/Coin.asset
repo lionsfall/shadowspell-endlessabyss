@@ -63,7 +63,7 @@ MonoBehaviour:
       Entry: 6
       Data: 
   essenceID: 2
-  executeAcquireEffectOnly: 1
+  acquireEffectOnly: 1
   lifeSpan: 5
   quality: 0
   essenceName: Coin

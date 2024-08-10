@@ -24,6 +24,9 @@ namespace Dogabeey
             player = Player.Instance;
 
             InitUI();
+        }
+        private void Update()
+        {
             DrawUI();
         }
         public void InitUI()

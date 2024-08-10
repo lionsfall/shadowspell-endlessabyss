@@ -26,6 +26,11 @@ namespace Dogabeey
             InitUI();
             DrawUI();
         }
+        private void Update()
+        {
+
+            DrawUI();
+        }
         public void InitUI()
         {
             for (int i = 0; i < maxPossibleMana; i++)
