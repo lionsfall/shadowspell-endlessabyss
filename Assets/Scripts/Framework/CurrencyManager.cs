@@ -53,6 +53,10 @@ namespace Dogabeey
             {
                 AddCoinAnimation(source.transform.position, coinTransform.position, coinAmount);
             }
+            else
+            {
+                AddCoinAnimation(Vector3.zero, coinTransform.position, coinAmount);
+            }
         }
         public void AddCurrency(string currencyID, float premiumCurrencyAmount, GameObject source = null)
         {
@@ -60,6 +64,10 @@ namespace Dogabeey
             if (source != null)
             {
                 AddCoinAnimation(source.transform.position, currencyModel.currencyTransform.position, premiumCurrencyAmount);
+            }
+            else
+            {
+                AddCoinAnimation(Vector3.zero, currencyModel.currencyTransform.position, premiumCurrencyAmount);
             }
 
             currencyModel.Amount += premiumCurrencyAmount;
@@ -87,6 +95,7 @@ namespace Dogabeey
         void UpdateCoinText()
         {
             coinText.text = Mathf.FloorToInt(Coin).ToString();
+            coinText.transform.DOScale(Vector3.one * 1.2f, 0.15f).OnComplete(() => coinText.transform.DOScale(Vector3.one, 0.15f));
 
         }
         private void UpdateCurrencyText()

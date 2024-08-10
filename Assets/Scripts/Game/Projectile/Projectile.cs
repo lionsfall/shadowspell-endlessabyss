@@ -153,16 +153,5 @@ namespace Dogabeey
         {
             onHit.ForEach(o => o.Invoke(this));
         }
-
-        public static explicit operator Projectile(JSONNode v)
-        {
-            var projectile = new Projectile
-            {
-                projectileFlags = (ProjectileFlags)(int)v["ProjectileFlags"],
-                tickTime = (float)v["TickTime"],
-                maxRange = (float)v["MaxRange"]
-            };
-            return projectile;
-        }
     }
 }

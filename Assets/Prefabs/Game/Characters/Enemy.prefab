@@ -315,23 +315,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 01010e000000740061007200670065007400430072006500610074007500720065002f00000000013000000044006f006700610062006500650079002e005000690063006b0043006c006f007300650073007400570069007400680069006e00520061006e00670065002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f0105000000720061006e00670065000000000005
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: targetCreature
-      Entry: 7
-      Data: 0|Dogabeey.PickClosestWithinRange, Assembly-CSharp
-    - Name: range
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   baseMaxHealth: 1
   baseDamage: 0
   baseAttackRate: 0
@@ -350,9 +341,12 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
+  onKill:
+    m_PersistentCalls:
+      m_Calls: []
   essencePrefab: {fileID: 5599279708850110741, guid: f9b88272a15aa78409e560e4de70b823, type: 3}
   dropOffset: {x: 0, y: 0.5, z: 0}
   essenceDropRate: 1
   dropPool:
-  - essence: {fileID: 11400000, guid: 69e88f6301284a44fa5ba3b881108c11, type: 2}
+  - essence: {fileID: 11400000, guid: 23095c57016071e459454231adaddbb8, type: 2}
     dropWeight: 1

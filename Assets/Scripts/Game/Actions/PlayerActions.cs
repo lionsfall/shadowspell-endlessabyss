@@ -246,12 +246,12 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
-    public class AddCoin : PlayerAction
+    public class AddCoinAction : PlayerAction
     {
         public int amount;
         public override void Invoke(Player player)
         {
-            CurrencyManager.Instance.AddCoin(amount);
+            CurrencyManager.Instance.AddCoin(amount, player.gameObject);
         }
     }
     [System.Serializable]

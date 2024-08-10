@@ -30,12 +30,12 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|Dogabeey.HealPlayerAction, Assembly-CSharp
+      Data: 1|Dogabeey.AddCoinAction, Assembly-CSharp
     - Name: active
       Entry: 5
       Data: true
     - Name: amount
-      Entry: 4
+      Entry: 3
       Data: 1
     - Name: 
       Entry: 8
@@ -69,4 +69,4 @@ MonoBehaviour:
   essenceName: Coin
   essenceDescription: 
   essenceIcon: {fileID: 0}
-  essenceMesh: {fileID: 1975865927429741083, guid: eee7f4d14a94e7147999890283478483, type: 3}
+  essenceMesh: {fileID: 1975865927429741083, guid: 72584fe9ef9a8304ca551a6159f362ce, type: 3}
