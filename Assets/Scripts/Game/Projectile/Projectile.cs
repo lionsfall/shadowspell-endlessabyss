@@ -140,9 +140,12 @@ namespace Dogabeey
             if (target != null && projectileFlags.HasFlag(ProjectileFlags.Homing))
             {
                 Vector3 towards = target.transform.position - transform.position;
-                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
-                    .SetEase(Ease.Linear)
-                    .OnComplete(() => Destroy(gameObject));
+                if(owner)
+                {
+                    movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
+                        .SetEase(Ease.Linear)
+                        .OnComplete(() => Destroy(gameObject));
+                }
             }
         }
         public virtual void OnProjectileDeath()

@@ -139,7 +139,6 @@ namespace Dogabeey
             
 
             StartCoroutine(AttackSequence());
-            ProjectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             Instance = this;
 

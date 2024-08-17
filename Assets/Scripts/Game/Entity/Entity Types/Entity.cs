@@ -140,6 +140,8 @@ namespace Dogabeey
         {
             base.Start();
             CurrentHealth = MaxHealth;
+
+            ProjectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         }
 
         /// <summary>
