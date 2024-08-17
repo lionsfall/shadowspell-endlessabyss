@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 8051006695902708169}
   - component: {fileID: 8930619439590429151}
   - component: {fileID: 3850408813259497280}
+  - component: {fileID: 7825737054757335757}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -315,28 +316,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 01010e000000740061007200670065007400430072006500610074007500720065002f00000000013000000044006f006700610062006500650079002e005000690063006b0043006c006f007300650073007400570069007400680069006e00520061006e00670065002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f0105000000720061006e00670065000000000005
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: targetCreature
-      Entry: 7
-      Data: 0|Dogabeey.PickClosestWithinRange, Assembly-CSharp
-    - Name: range
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-  baseMaxHealth: 1
+    SerializationNodes: []
+  baseMaxHealth: 5
   baseDamage: 0
   baseAttackRate: 0
-  baseRange: 0
-  baseSpeed: 0
+  baseRange: 2000
+  baseSpeed: 1
   baseProjectileSpeed: 0
   onHurt:
     m_PersistentCalls:
@@ -353,9 +345,34 @@ MonoBehaviour:
   onKill:
     m_PersistentCalls:
       m_Calls: []
+  projectilePrefab: {fileID: 0}
   essencePrefab: {fileID: 5599279708850110741, guid: f9b88272a15aa78409e560e4de70b823, type: 3}
   dropOffset: {x: 0, y: 0.5, z: 0}
   essenceDropRate: 1
   dropPool:
   - essence: {fileID: 11400000, guid: a6905c0d82f35c04da817c5cb8193b62, type: 2}
     dropWeight: 1
+  shootingRange: 0
+  playerLookDuration: 0
+--- !u!195 &7825737054757335757
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053580656990680250}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

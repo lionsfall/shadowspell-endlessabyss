@@ -5,17 +5,25 @@ using UnityEngine.AI;
 
 namespace Dogabeey
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public abstract class EnemyEntity : Creature
     {
         public override bool IsPlayer => false;
 
-        public NavMeshAgent agent;
         [Header("Essence Drop")]
         public EssenceController essencePrefab;
         public Vector3 dropOffset;
         [Range(0, 1)]
         public float essenceDropRate;
         public List<Essence.EssenceDrop> dropPool;
+
+        internal NavMeshAgent agent;
+
+        protected override void Start()
+        {
+            base.Start();
+            agent = GetComponent<NavMeshAgent>();
+        }
 
         public override void OnDeath(Entity killer)
         {
@@ -34,5 +42,12 @@ namespace Dogabeey
                 weightedPool[UnityEngine.Random.Range(0, weightedPool.Count)].DropEssence(essencePrefab, transform.position);
             }
         }
+
+        protected virtual void Update()
+        {
+            AIUpdate();
+        }
+
+        public abstract void AIUpdate();
     }
 }

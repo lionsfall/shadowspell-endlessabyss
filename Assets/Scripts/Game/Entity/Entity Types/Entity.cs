@@ -64,6 +64,13 @@ namespace Dogabeey
         public UnityEvent onKill;
         [BoxGroup("Misc")]
         public CreaturePicker targetCreature;
+        [BoxGroup("Projectile Settings")]
+        public Projectile projectilePrefab;
+        internal Projectile ProjectileInstance
+        {
+            get;
+            set;
+        }
 
         protected EntityState state;
 
@@ -187,6 +194,17 @@ namespace Dogabeey
         internal virtual void Heal(float healAmount)
         {
             CurrentHealth += healAmount;
+        }
+        protected void ThrowProjectile(Entity target)
+        {
+            if (projectilePrefab != null)
+            {
+                Projectile p = Instantiate(ProjectileInstance, transform.position, Quaternion.identity);
+                p.owner = this;
+                p.target = target;
+                p.transform.LookAt(target.transform);
+                p.gameObject.SetActive(true);
+            }
         }
     }
 

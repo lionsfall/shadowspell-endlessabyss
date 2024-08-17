@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace Dogabeey
@@ -8,13 +9,31 @@ namespace Dogabeey
         public override float Damage => baseDamage;
         public override float AttackRate => baseAttackRate;
         public override float Range => baseRange;
-        public override float Speed => baseSpeed;
+        public override float Speed => baseSpeed * Const.Values.ENEMY_SPEED_MULTIPLIER;
         public override float ProjectileSpeed => baseProjectileSpeed;
 
+        public float shootingRange;
+        public float playerLookDuration;
 
+        public override void AIUpdate()
+        {
+            agent.speed = Speed;
+            // Chase the player if the player between Range and shootingRange. Shoot the player if below shootingRange.
+            if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= Range && Vector3.Distance(transform.position, Player.Instance.transform.position) > shootingRange)
+            {
+                agent.SetDestination(Player.Instance.transform.position);
+            }
+            else if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= shootingRange)
+            {
+                agent.SetDestination(transform.position);
+                transform.DOLookAt(Player.Instance.transform.position, playerLookDuration);
+                Attack(Player.Instance);
+            }
+
+        }
         public override void Attack(Entity target)
         {
-            throw new System.NotImplementedException();
+            ThrowProjectile(target);
         }
 
         public override void Hurt(Entity damageSource, float damage, DamageType damageType)

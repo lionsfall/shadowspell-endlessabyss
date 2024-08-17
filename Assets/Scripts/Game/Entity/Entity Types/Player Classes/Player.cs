@@ -40,14 +40,7 @@ namespace Dogabeey
         [BoxGroup("Misc")]
         public List<CountedDamageImmunity> damageImmunities;
 
-        [BoxGroup("Projectile Settings")]
-        public Projectile projectilePrefab;
 
-        internal Projectile ProjectileInstance
-        {
-            get;
-            set;
-        }
         public float CurrentMana
         {
             get =>
@@ -196,15 +189,10 @@ namespace Dogabeey
         }
         public override void Attack(Entity target)
         {
-            if (projectilePrefab != null)
-            {
-                Projectile p = Instantiate(ProjectileInstance, transform.position, Quaternion.identity);
-                p.owner = this;
-                p.target = target;
-                p.transform.LookAt(target.transform);
-                p.gameObject.SetActive(true);
-            }
+            ThrowProjectile(target);
         }
+
+
         public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
             // If has counted immunity against this damage type, don't execute the hurt and Remove its stack by 1.
