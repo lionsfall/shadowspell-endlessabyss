@@ -18,6 +18,7 @@ namespace Dogabeey
         public List<Essence.EssenceDrop> dropPool;
 
         internal NavMeshAgent agent;
+        internal EnemyState enemyState;
 
         protected override void Start()
         {
@@ -49,5 +50,13 @@ namespace Dogabeey
         }
 
         public abstract void AIUpdate();
+    }
+
+    public enum EnemyState
+    {
+        Idle,
+        Flee,
+        Chase,
+        Attack
     }
 }

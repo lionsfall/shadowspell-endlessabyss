@@ -184,6 +184,8 @@ MonoBehaviour:
       Data: 
   owner: {fileID: 0}
   target: {fileID: 0}
-  projectileFlags: 8
+  projectileFlags: 0
   tickTime: 1
   maxRange: 0
+  speedMultiplier: 1
+  keepAsOwnerChild: 0

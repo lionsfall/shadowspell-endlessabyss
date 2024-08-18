@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 namespace Dogabeey
@@ -15,6 +16,11 @@ namespace Dogabeey
         public float shootingRange;
         public float playerLookDuration;
 
+        protected override void Start()
+        {
+            base.Start();
+            StartCoroutine(AttackSequence());
+        }
         public override void AIUpdate()
         {
             agent.speed = Speed;
@@ -22,12 +28,13 @@ namespace Dogabeey
             if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= Range && Vector3.Distance(transform.position, Player.Instance.transform.position) > shootingRange)
             {
                 agent.SetDestination(Player.Instance.transform.position);
+                enemyState = EnemyState.Chase;
             }
             else if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= shootingRange)
             {
                 agent.SetDestination(transform.position);
                 transform.DOLookAt(Player.Instance.transform.position, playerLookDuration);
-                Attack(Player.Instance);
+                enemyState = EnemyState.Attack;
             }
 
         }
@@ -45,6 +52,18 @@ namespace Dogabeey
         {
             base.OnDeath(killer);
             Destroy(gameObject);
+        }
+
+        private IEnumerator AttackSequence()
+        {
+            while (enabled)
+            {
+                yield return new WaitForSeconds(AttackRate);
+                if (enemyState == EnemyState.Attack)
+                {
+                    Attack(Player.Instance);
+                }
+            }
         }
 
     }
