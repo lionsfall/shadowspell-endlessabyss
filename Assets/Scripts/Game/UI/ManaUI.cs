@@ -48,6 +48,9 @@ namespace Dogabeey
         }
         public override void DrawUI()
         {
+            if(!player)
+                return;
+
             manaContainers.ForEach(x => x.gameObject.SetActive(false));
             manas.ForEach(x => x.gameObject.SetActive(false));
 

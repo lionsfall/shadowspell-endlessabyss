@@ -46,6 +46,9 @@ namespace Dogabeey
         }
         public override void DrawUI()
         {
+            if(player == null)
+                return;
+
             heartContainers.ForEach(x => x.gameObject.SetActive(false));
             hearts.ForEach(x => x.gameObject.SetActive(false));
 

@@ -87,7 +87,7 @@ namespace Dogabeey
             {
                 if (value <= 0)
                 {
-                    State = EntityState.Dead;
+                    Die();
                     PlayerPrefs.SetFloat("Health_" + GetHashCode(), 0);
                 }
                 if (value > MaxHealth)
@@ -116,6 +116,7 @@ namespace Dogabeey
                     case EntityState.Run:
                         break;
                     case EntityState.Dead:
+                        EventManager.TriggerEvent(Const.GameEvents.CREATURE_DEATH, new EventParam(paramObj: gameObject));
                         OnDeath(lastDamager);
                         break;
                     default:
@@ -201,12 +202,20 @@ namespace Dogabeey
         {
             if (projectilePrefab != null)
             {
-                Projectile p = Instantiate(ProjectileInstance, transform.position, Quaternion.identity);
-                p.owner = this;
-                p.target = target;
-                p.transform.LookAt(target.transform);
-                p.gameObject.SetActive(true);
+                if(target)
+                {
+                    Projectile p = Instantiate(ProjectileInstance, transform.position, Quaternion.identity);
+                    p.owner = this;
+                    p.target = target;
+                    p.transform.LookAt(target.transform);
+                    p.gameObject.SetActive(true);
+                }
             }
+        }
+
+        public virtual void Die()
+        {
+            State = EntityState.Dead;
         }
     }
 

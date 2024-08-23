@@ -23,6 +23,12 @@ namespace Dogabeey
         }
         public override void AIUpdate()
         {
+            if(Player.Instance == null)
+            {
+                return;
+            }
+
+
             agent.speed = Speed;
             // Chase the player if the player between Range and shootingRange. Shoot the player if below shootingRange.
             if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= Range && Vector3.Distance(transform.position, Player.Instance.transform.position) > shootingRange)

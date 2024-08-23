@@ -177,6 +177,8 @@ namespace Dogabeey
         public override void OnDeath(Entity killer)
         {
             base.OnDeath(killer);
+            Destroy(gameObject);
+            EventManager.TriggerEvent(Const.GameEvents.LEVEL_FAILED);
         }
         public override void OnDamage(Entity target, float damage)
         {
