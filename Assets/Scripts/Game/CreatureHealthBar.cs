@@ -15,6 +15,22 @@ namespace Dogabeey
 
         private Canvas canvas;
 
+        private void OnEnable()
+        {
+            EventManager.StartListening(Const.GameEvents.CREATURE_DEATH, OnCreatureDied);
+        }
+        private void OnDisable()
+        {
+            EventManager.StopListening(Const.GameEvents.CREATURE_DEATH, OnCreatureDied);
+        }
+        private void OnCreatureDied(EventParam e)
+        {
+            if (e.paramObj == referenceCreature.gameObject)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         private void Start()
         {
             canvas = GameObject.FindGameObjectWithTag(canvasTag).GetComponent<Canvas>();
