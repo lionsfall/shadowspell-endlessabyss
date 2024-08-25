@@ -235,7 +235,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 94
   m_CollisionDetection: 0
 --- !u!114 &3850408813259497280
 MonoBehaviour:
@@ -250,27 +250,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 01010e000000740061007200670065007400430072006500610074007500720065002f00000000013000000044006f006700610062006500650079002e005000690063006b0043006c006f007300650073007400570069007400680069006e00520061006e00670065002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f0105000000720061006e00670065000000000005
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: targetCreature
-      Entry: 7
-      Data: 0|Dogabeey.PickClosestWithinRange, Assembly-CSharp
-    - Name: range
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   baseMaxHealth: 5
   baseDamage: 1
   baseAttackRate: 1
-  baseRange: 2000
+  baseRange: 5
   baseSpeed: 1
   baseProjectileSpeed: 1
   onHurt:
@@ -295,8 +286,6 @@ MonoBehaviour:
   dropPool:
   - essence: {fileID: 11400000, guid: a6905c0d82f35c04da817c5cb8193b62, type: 2}
     dropWeight: 1
-  shootingRange: 3
-  playerLookDuration: 0
 --- !u!195 &7825737054757335757
 NavMeshAgent:
   m_ObjectHideFlags: 0
