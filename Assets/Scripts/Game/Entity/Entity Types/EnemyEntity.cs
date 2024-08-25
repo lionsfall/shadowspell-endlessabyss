@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,11 +11,14 @@ namespace Dogabeey
     {
         public override bool IsPlayer => false;
 
-        [Header("Essence Drop")]
+        [FoldoutGroup("Essence Drop")]
         public EssenceController essencePrefab;
+        [FoldoutGroup("Essence Drop")]
         public Vector3 dropOffset;
         [Range(0, 1)]
+        [FoldoutGroup("Essence Drop")]
         public float essenceDropRate;
+        [FoldoutGroup("Essence Drop")]
         public List<Essence.EssenceDrop> dropPool;
 
         internal NavMeshAgent agent;

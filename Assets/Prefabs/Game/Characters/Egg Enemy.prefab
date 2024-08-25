@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 3850408813259497280}
   - component: {fileID: 7825737054757335757}
   - component: {fileID: 7206380932057538711}
-  - component: {fileID: 3326969273481260921}
+  - component: {fileID: 5997352903102514711}
   m_Layer: 0
   m_Name: Egg Enemy
   m_TagString: Untagged
@@ -333,32 +333,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarRef: {fileID: 2418673775000556651}
   referenceCreature: {fileID: 3850408813259497280}
-  healthBarPositionOffset: {x: 0, y: 50}
+  healthBarPositionOffset: {x: 0, y: 250}
   scaleOffset: 3
   healthImage: {fileID: 2587684212338709555}
   canvasTag: HP
---- !u!95 &3326969273481260921
-Animator:
-  serializedVersion: 7
+--- !u!114 &5997352903102514711
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6053580656990680250}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04418739e0d31c4d9542978f38f32d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1765894611516443739}
+  blendSettings: []
+  idleText: idle
+  runText: run
+  attackText: attack
+  damageText: damage
+  deathText: die
 --- !u!1 &8106461709656177077
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +446,18 @@ PrefabInstance:
       value: Egglet
       objectReference: {fileID: 0}
     - target: {fileID: 7610133508914092143, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610133508914092143, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610133508914092143, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5127
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610133508914092143, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -493,6 +502,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
+--- !u!95 &1765894611516443739 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7610133508921096079, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
+  m_PrefabInstance: {fileID: 8150697083448277972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1765894611523347387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7610133508914092143, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}

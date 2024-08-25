@@ -83,7 +83,6 @@ namespace Dogabeey
 		public virtual void Start()
 		{
 			entity = GetComponent<Creature>();
-			animator = GetComponent<Animator>();
 		}
 
 		public virtual void Update()

@@ -33,11 +33,11 @@ namespace Dogabeey
 
         public static Player Instance;
 
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseMaxMana;
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseManaRegen;
-        [BoxGroup("Misc")]
+        [FoldoutGroup("Misc")]
         public List<CountedDamageImmunity> damageImmunities;
 
 
@@ -64,21 +64,21 @@ namespace Dogabeey
 
         [Header("Player References")]
         public MeshRenderer playerMesh;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<MaxHealthModifier> maxHealthModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<MaxManaModifier> maxManaModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<ManaRegenModifier> manaRegenModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<DamageModifier> damageModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<AttackRateModifier> attackRateModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<RangeModifier> rangeModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<SpeedModifier> speedModifiers;
-        [BoxGroup("Player Stat Modifiers")]
+        [FoldoutGroup("Player Stat Modifiers")]
         public List<ProjectileSpeedModifier> projectileSpeedModifiers;
 
         internal List<EssenceInstance> essences = new List<EssenceInstance>();

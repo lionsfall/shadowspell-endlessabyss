@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
@@ -12,9 +13,6 @@ namespace Dogabeey
         public override float Range => baseRange;
         public override float Speed => baseSpeed * Const.Values.ENEMY_SPEED_MULTIPLIER;
         public override float ProjectileSpeed => baseProjectileSpeed;
-
-        public float shootingRange;
-        public float playerLookDuration;
 
         protected override void Start()
         {
@@ -31,22 +29,19 @@ namespace Dogabeey
 
             agent.speed = Speed;
             // Chase the player if the player between Range and shootingRange. Shoot the player if below shootingRange.
-            if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= Range && Vector3.Distance(transform.position, Player.Instance.transform.position) > shootingRange)
+            if (Vector3.Distance(transform.position, Player.Instance.transform.position) > Range)
             {
-                agent.SetDestination(Player.Instance.transform.position);
-                enemyState = EnemyState.Chase;
-                State = EntityState.Run;
-            }
-            else if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= shootingRange)
-            {
-                agent.SetDestination(transform.position);
-                transform.DOLookAt(Player.Instance.transform.position, playerLookDuration);
-                enemyState = EnemyState.Attack;
+                agent.isStopped = true;
+                enemyState = EnemyState.Idle;
+                State = EntityState.Idle;
             }
             else
             {
-                agent.isStopped = true;
-                State = EntityState.Idle;
+                agent.isStopped = false;
+                agent.SetDestination(Player.Instance.transform.position);
+                transform.DOLookAt(Player.Instance.transform.position, 0);
+                enemyState = EnemyState.Chase;
+                State = EntityState.Run;
             }
 
         }

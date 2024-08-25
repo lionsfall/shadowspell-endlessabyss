@@ -39,33 +39,34 @@ namespace Dogabeey
     }
     public abstract class Creature : Entity
     {
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseMaxHealth;
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseDamage;
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseAttackRate;
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseRange;
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseSpeed;
-        [BoxGroup("Base Stats")]
+        [FoldoutGroup("Base Stats")]
         public float baseProjectileSpeed;
         [Space]
-        [BoxGroup("Events")]
+        [FoldoutGroup("Events")]
         public UnityEvent onHurt;
-        [BoxGroup("Events")]
+        [FoldoutGroup("Events")]
         public UnityEvent onDeath;
-        [BoxGroup("Events")]
+        [FoldoutGroup("Events")]
         public UnityEvent onDamage;
-        [BoxGroup("Events")]
+        [FoldoutGroup("Events")]
         public UnityEvent onAttack;
-        [BoxGroup("Events")]
+        [FoldoutGroup("Events")]
         public UnityEvent onKill;
-        [BoxGroup("Misc")]
+        [FoldoutGroup("Targeting Settings")]
         public CreaturePicker targetCreature;
-        [BoxGroup("Projectile Settings")]
+        [FoldoutGroup("Targeting Settings")]
         public Projectile projectilePrefab;
+
         internal Projectile ProjectileInstance
         {
             get;
@@ -189,7 +190,7 @@ namespace Dogabeey
         public virtual void Attack(Entity target)
         {
             EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-            OnAttack();
+            OnAttack(target);
         }
         public virtual void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
