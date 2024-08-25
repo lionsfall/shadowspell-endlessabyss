@@ -72,6 +72,8 @@ namespace Dogabeey
 
             public const string CREATURE_DEATH = "CREATURE_DEATH";
             public const string CREATURE_JUMP = "CREATURE_JUMP";
+            public const string CREATURE_DAMAGE = "CREATURE_DAMAGE";
+            public const string CREATURE_ATTACK = "CREATURE_ATTACK";
         }
     }
 }

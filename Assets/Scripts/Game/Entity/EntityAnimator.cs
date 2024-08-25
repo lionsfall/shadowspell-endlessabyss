@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 namespace Dogabeey
 {
 	[RequireComponent(typeof(Entity))]
-	[RequireComponent(typeof(Animator))]
 	public class EntityAnimator : MonoBehaviour
 	{
 		[System.Serializable]
@@ -18,11 +17,13 @@ namespace Dogabeey
 			public float value;
 		}
 
-		public List<BlendSetting> blendSettings;
-		public float minVelocity = 0.01f;
-		public string idleText;
-		public string runText;
-		public string jumpText;
+        public Animator animator;
+        public List<BlendSetting> blendSettings;
+		public string idleText = "idle";
+		public string runText = "run";
+		public string attackText = "attack";
+		public string damageText = "damage";
+		public string deathText = "die";
 
 		public bool Idle
 		{
@@ -38,15 +39,6 @@ namespace Dogabeey
                 return entity.State == Entity.EntityState.Run;
             }
         }
-        public bool Jump
-        {
-            get
-            {
-				return Mathf.Abs(entity.rb.linearVelocity.y) > minVelocity;
-            }
-        }
-
-        protected Animator animator;
 		protected Creature entity;
 
 		#region Events
@@ -55,27 +47,36 @@ namespace Dogabeey
 		public virtual void OnEnable()
 		{
 			EventManager.StartListening(Const.GameEvents.CREATURE_DEATH, OnDeath);
-			EventManager.StartListening(Const.GameEvents.CREATURE_JUMP, OnJump);
+			EventManager.StartListening(Const.GameEvents.CREATURE_ATTACK, OnAttack);
+			EventManager.StartListening(Const.GameEvents.CREATURE_DAMAGE, OnDamage);
 		}
 		public virtual void OnDisable()
 		{
 			EventManager.StopListening(Const.GameEvents.CREATURE_DEATH, OnDeath);
-            EventManager.StopListening(Const.GameEvents.CREATURE_JUMP, OnJump);
+            EventManager.StopListening(Const.GameEvents.CREATURE_ATTACK, OnAttack);
+            EventManager.StopListening(Const.GameEvents.CREATURE_DAMAGE, OnDamage);
         }
 		void OnDeath(EventParam e)
 		{
 			if (e.paramObj.GetHashCode() == gameObject.GetHashCode())
 			{
-				animator.SetTrigger("die");
+				animator.SetTrigger(deathText);
 			}
 		}
-		void OnJump(EventParam e)
+		void OnAttack(EventParam e)
 		{
-			if (e.paramObj.GetHashCode() == gameObject.GetHashCode())
+            if (e.paramObj.GetHashCode() == gameObject.GetHashCode())
 			{
-				animator.SetTrigger("jump_trigger");
-			}
-		}
+                animator.SetTrigger(attackText);
+            }
+        }
+		void OnDamage(EventParam e)
+		{
+            if (e.paramObj.GetHashCode() == gameObject.GetHashCode())
+			{
+                animator.SetTrigger(damageText);
+            }
+        }
 
 		#endregion
 
@@ -97,7 +98,6 @@ namespace Dogabeey
 		{
 			animator.SetBool(idleText, Idle);
 			animator.SetBool(runText, Run);
-			animator.SetBool(jumpText, Jump);
 		}
 
 		void SetBlendValues()

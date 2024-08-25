@@ -49,6 +49,11 @@ namespace Dogabeey
             AIUpdate();
         }
 
+        /// <summary>
+        /// This is where the AI logic is implemented. It usually makes use of the NavMeshAgent to move the enemy based on player location or something else. 
+        /// You should also set the State and enemyState variables here based on the enemy's current action. enemyState is just there to help you make the AI logic easier.
+        /// State is used to trigger the animations and other events.
+        /// </summary>
         public abstract void AIUpdate();
     }
 

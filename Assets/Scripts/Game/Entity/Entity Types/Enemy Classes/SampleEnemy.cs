@@ -35,12 +35,18 @@ namespace Dogabeey
             {
                 agent.SetDestination(Player.Instance.transform.position);
                 enemyState = EnemyState.Chase;
+                State = EntityState.Run;
             }
             else if (Vector3.Distance(transform.position, Player.Instance.transform.position) <= shootingRange)
             {
                 agent.SetDestination(transform.position);
                 transform.DOLookAt(Player.Instance.transform.position, playerLookDuration);
                 enemyState = EnemyState.Attack;
+            }
+            else
+            {
+                agent.isStopped = true;
+                State = EntityState.Idle;
             }
 
         }

@@ -186,9 +186,14 @@ namespace Dogabeey
             lastVictim = target;
         }
 
-        public abstract void Attack(Entity target);
+        public virtual void Attack(Entity target)
+        {
+            EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
+            OnAttack();
+        }
         public virtual void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
+            EventManager.TriggerEvent(Const.GameEvents.CREATURE_DAMAGE, new EventParam(paramObj: gameObject));
             OnHurt(damageSource, damage);
             CurrentHealth -= damage;
             lastHurtTime = Time.time;
