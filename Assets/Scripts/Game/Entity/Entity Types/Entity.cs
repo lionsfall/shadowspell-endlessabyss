@@ -154,7 +154,6 @@ namespace Dogabeey
         public virtual void OnHurt(Entity damageSource, float damage)
         {
             onHurt.Invoke();
-            lastDamager = damageSource;
         }
         /// <summary>
         /// When the entity dies.
@@ -196,8 +195,11 @@ namespace Dogabeey
         {
             EventManager.TriggerEvent(Const.GameEvents.CREATURE_DAMAGE, new EventParam(paramObj: gameObject));
             OnHurt(damageSource, damage);
+            lastDamager = damageSource;
             CurrentHealth -= damage;
             lastHurtTime = Time.time;
+
+            
         }
 
         internal virtual void Heal(float healAmount)

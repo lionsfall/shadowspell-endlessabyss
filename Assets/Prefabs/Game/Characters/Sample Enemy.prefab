@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 7206380932057538711}
   - component: {fileID: 5997352903102514711}
   m_Layer: 0
-  m_Name: Egg Enemy
+  m_Name: Sample Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,14 +250,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 01010e000000740061007200670065007400430072006500610074007500720065002f00000000013000000044006f006700610062006500650079002e005000690063006b0043006c006f007300650073007400570069007400680069006e00520061006e00670065002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f0105000000720061006e00670065000000000005
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: targetCreature
+      Entry: 7
+      Data: 0|Dogabeey.PickClosestWithinRange, Assembly-CSharp
+    - Name: range
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
   baseMaxHealth: 5
   baseDamage: 1
   baseAttackRate: 1
@@ -286,6 +295,7 @@ MonoBehaviour:
   dropPool:
   - essence: {fileID: 11400000, guid: a6905c0d82f35c04da817c5cb8193b62, type: 2}
     dropWeight: 1
+  enemyMesh: {fileID: 1765894611520664219}
 --- !u!195 &7825737054757335757
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -494,6 +504,11 @@ PrefabInstance:
 --- !u!95 &1765894611516443739 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7610133508921096079, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
+  m_PrefabInstance: {fileID: 8150697083448277972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1765894611520664219 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7610133508925163855, guid: 4cc22bc9bbfb9074782265ec91ae0660, type: 3}
   m_PrefabInstance: {fileID: 8150697083448277972}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1765894611523347387 stripped

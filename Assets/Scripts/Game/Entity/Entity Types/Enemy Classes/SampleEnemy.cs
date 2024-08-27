@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -33,7 +32,7 @@ namespace Dogabeey
             if (Vector3.Distance(transform.position, Player.Instance.transform.position) > Range)
             {
                 agent.isStopped = true;
-                enemyState = EnemyState.Idle;
+                EnemyState = EnemyState.Idle;
                 State = EntityState.Idle;
             }
             else
@@ -41,7 +40,7 @@ namespace Dogabeey
                 agent.isStopped = false;
                 agent.SetDestination(Player.Instance.transform.position);
                 transform.DOLookAt(Player.Instance.transform.position, 0);
-                enemyState = EnemyState.Chase;
+                EnemyState = EnemyState.Chase;
                 State = EntityState.Run;
             }
 
@@ -67,44 +66,12 @@ namespace Dogabeey
             while (enabled)
             {
                 yield return new WaitForSeconds(AttackRate);
-                if (enemyState == EnemyState.Attack)
+                if (EnemyState == EnemyState.Attack)
                 {
                     Attack(Player.Instance);
                 }
             }
         }
 
-    }
-
-    public class SpiralingBat : EnemyEntity
-    {
-        public override float MaxHealth => baseMaxHealth;
-        public override float Damage => baseDamage;
-        public override float AttackRate => baseAttackRate;
-        public override float Range => baseRange;
-        public override float Speed => baseSpeed * Const.Values.ENEMY_SPEED_MULTIPLIER;
-        public override float ProjectileSpeed => baseProjectileSpeed;
-
-        [FoldoutGroup("Enemy-Specific Settings")]
-        public float spiralSpeed = 5f;  // Speed of the spiral movement
-        [FoldoutGroup("Enemy-Specific Settings")]
-        public float approachSpeed = 2f; // Speed at which the agent approaches the target
-        [FoldoutGroup("Enemy-Specific Settings")]
-        public float spiralRadius = 5f;  // Initial radius of the spiral
-
-        protected override void Start()
-        {
-            base.Start();
-        }
-        public override void AIUpdate()
-        {
-            Creature target = targetCreature.GetCreature(this);
-            Vector3 directionToTarget = target.transform.position  - transform.position;
-            float distanceToTarget = directionToTarget.magnitude;
-            float angle = Time.time * spiralSpeed;
-            Vector3 offset = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle)) * Mathf.Min(distanceToTarget, spiralRadius);
-            Vector3 spiralPosition = target.transform.position - directionToTarget.normalized * approachSpeed * Time.deltaTime + offset;
-            agent.SetDestination(spiralPosition);
-        }
     }
 }

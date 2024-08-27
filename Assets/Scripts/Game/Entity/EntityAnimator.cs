@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 namespace Dogabeey
 {
-	[RequireComponent(typeof(Entity))]
 	public class EntityAnimator : MonoBehaviour
 	{
 		[System.Serializable]

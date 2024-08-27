@@ -34,6 +34,14 @@ namespace Dogabeey
         }
     }
     [System.Serializable]
+    public class PickPlayer : CreaturePicker
+    {
+        public override Creature GetCreature(Creature sourceEntity)
+        {
+            return Player.Instance;
+        }
+    }
+    [System.Serializable]
     public class PickRandomWithinRange : CreaturePicker
     {
         public float range;

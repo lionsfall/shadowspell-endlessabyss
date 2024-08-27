@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Dogabeey
     {
         public override bool IsPlayer => false;
 
+        public virtual EnemyState EnemyState { get => enemyState; set => enemyState = value; }
+
         [FoldoutGroup("Essence Drop")]
         public EssenceController essencePrefab;
         [FoldoutGroup("Essence Drop")]
@@ -20,9 +23,11 @@ namespace Dogabeey
         public float essenceDropRate;
         [FoldoutGroup("Essence Drop")]
         public List<Essence.EssenceDrop> dropPool;
+        [FoldoutGroup("Enemy-Specific Settings")]
+        public SkinnedMeshRenderer enemyMesh;
 
         internal NavMeshAgent agent;
-        internal EnemyState enemyState;
+        protected EnemyState enemyState;
 
         protected override void Start()
         {
@@ -46,6 +51,14 @@ namespace Dogabeey
                 }
                 weightedPool[UnityEngine.Random.Range(0, weightedPool.Count)].DropEssence(essencePrefab, transform.position);
             }
+        }
+
+
+        public override void Hurt(Entity damageSource, float damage, DamageType damageType)
+        {
+            base.Hurt(damageSource, damage, damageType);
+            enemyMesh.material.color = Color.red;
+            DOVirtual.DelayedCall(0.2f, () => enemyMesh.material.color = Color.white);
         }
 
         protected virtual void Update()
