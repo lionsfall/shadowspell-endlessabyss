@@ -190,6 +190,7 @@ namespace Dogabeey
         }
         public override void Attack(Entity target)
         {
+            EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
             ThrowProjectile(target);
         }
 
