@@ -13,6 +13,8 @@ namespace Dogabeey
         public float speedMultiplier = 1f;
         public float rotationSpeed = 10f;
 
+        internal Vector3 direction;
+
         private Player player;
         private Joystick joystick;
 
@@ -28,11 +30,18 @@ namespace Dogabeey
             {
                 player.State = Entity.EntityState.Run;
 
-                Vector3 direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+                direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
 
                 player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
+                if(player.targetCreature.GetCreature(player))
+                {
+                    player.transform.DOLookAt(player.targetCreature.GetCreature(player).transform.position, rotationSpeed);
+                }
+                else
+                {
+                    player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
+                }
                 // Look at direction
-                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
             }
             else
             {

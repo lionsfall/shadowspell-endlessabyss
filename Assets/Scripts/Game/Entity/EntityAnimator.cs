@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace Dogabeey
 {
-	public class EntityAnimator : MonoBehaviour
+    public class EntityAnimator : MonoBehaviour
 	{
 		[System.Serializable]
 		public class BlendSetting
@@ -92,7 +92,7 @@ namespace Dogabeey
 		/// <summary>
 		/// A method that is executed every frame of update to control animation.
 		/// </summary>
-		public void AnimationController()
+		public virtual void AnimationController()
 		{
 			animator.SetBool(idleText, Idle);
 			animator.SetBool(runText, Run);
