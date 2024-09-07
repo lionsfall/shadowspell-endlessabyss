@@ -170,6 +170,15 @@ namespace Dogabeey
             }
         }
 
+        public void AttackCurrentTarget()
+        {
+            Creature enemy = targetCreature.GetCreature(this);
+            if (enemy)
+            {
+                ThrowProjectile(enemy);
+            }
+        }
+
         public override void OnHurt(Entity damageSource, float damage)
         {
             base.OnHurt(damageSource, damage);
@@ -191,7 +200,7 @@ namespace Dogabeey
         public override void Attack(Entity target)
         {
             EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-            ThrowProjectile(target);
+            //ThrowProjectile(target);
         }
 
 

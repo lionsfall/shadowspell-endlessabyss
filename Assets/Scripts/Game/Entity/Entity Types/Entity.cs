@@ -65,6 +65,8 @@ namespace Dogabeey
         [FoldoutGroup("Targeting Settings")]
         public CreaturePicker targetCreature;
         [FoldoutGroup("Targeting Settings")]
+        public Transform projectilePosition;
+        [FoldoutGroup("Targeting Settings")]
         public Projectile projectilePrefab;
 
         internal Projectile ProjectileInstance
@@ -212,7 +214,7 @@ namespace Dogabeey
             {
                 if(target)
                 {
-                    Projectile p = Instantiate(ProjectileInstance, transform.position, Quaternion.identity);
+                    Projectile p = Instantiate(ProjectileInstance,projectilePosition ? projectilePosition.position : transform.position , Quaternion.identity);
                     p.owner = this;
                     p.target = target;
                     p.transform.LookAt(target.transform);
