@@ -26,22 +26,22 @@ namespace Dogabeey
 
         private void Update()
         {
+            direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+
+            player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
+            if (player.targetCreature.GetCreature(player))
+            {
+                player.transform.DOLookAt(player.targetCreature.GetCreature(player).transform.position, rotationSpeed);
+            }
+            else
+            {
+                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
+            }
+
             if (joystick.Horizontal != 0 || joystick.Vertical != 0)
             {
                 player.State = Entity.EntityState.Run;
 
-                direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
-
-                player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
-                if(player.targetCreature.GetCreature(player))
-                {
-                    player.transform.DOLookAt(player.targetCreature.GetCreature(player).transform.position, rotationSpeed);
-                }
-                else
-                {
-                    player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
-                }
-                // Look at direction
             }
             else
             {
