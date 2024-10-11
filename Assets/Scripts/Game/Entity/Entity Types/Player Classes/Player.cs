@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 
 namespace Dogabeey
 {
@@ -162,12 +163,12 @@ namespace Dogabeey
         {
             while (true)
             {
-                yield return new WaitForSeconds(AttackRate);
                 Creature enemy = targetCreature.GetCreature(this);
                 if (enemy)
                 {
                     Attack(enemy);
                 }
+                yield return new WaitForSeconds(AttackRate);
             }
         }
 
@@ -201,7 +202,11 @@ namespace Dogabeey
         public override void Attack(Entity target)
         {
             EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-            //ThrowProjectile(target);
+            if(currentDirection != Vector3.zero)
+            {
+                transform.DOLookAt(transform.position + currentDirection, 0);
+                AttackCurrentDirection();
+            }
         }
 
 

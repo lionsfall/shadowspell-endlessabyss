@@ -63,10 +63,7 @@ namespace Dogabeey
         }
         public void AttackUpdate()
         {
-            if (attackJoystick.Horizontal != 0 || attackJoystick.Vertical != 0)
-            {
-                player.currentDirection = new Vector3(attackJoystick.Horizontal, 0, attackJoystick.Vertical);
-            }
+            player.currentDirection = new Vector3(attackJoystick.Horizontal, 0, attackJoystick.Vertical);
         }
     }
 }

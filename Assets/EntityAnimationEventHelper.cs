@@ -7,14 +7,7 @@ namespace Dogabeey
     {
         public Player playerRef;
 
-        public void AttackCurrentTarget()
-        {
-            playerRef.AttackCurrentTarget();
-        }
-        public void AttackCurrentDirection()
-        {
-            playerRef.AttackCurrentDirection();
-        }
+
     }
 }
 
