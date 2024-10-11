@@ -11,6 +11,10 @@ namespace Dogabeey
         {
             playerRef.AttackCurrentTarget();
         }
+        public void AttackCurrentDirection()
+        {
+            playerRef.AttackCurrentDirection();
+        }
     }
 }
 

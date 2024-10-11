@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 
 namespace Dogabeey
 {
@@ -220,6 +221,16 @@ namespace Dogabeey
                     p.transform.LookAt(target.transform);
                     p.gameObject.SetActive(true);
                 }
+            }
+        }
+        protected void ThrowProjectile(Vector3 direction)
+        {
+            if (projectilePrefab != null && direction.magnitude != 0)
+            {
+                Projectile p = Instantiate(ProjectileInstance, projectilePosition ? projectilePosition.position : transform.position, Quaternion.identity);
+                p.owner = this;
+                p.gameObject.SetActive(true);
+                p.transform.DOMove(p.transform.position + direction * p.maxRange, p.speedMultiplier).SetSpeedBased();
             }
         }
 

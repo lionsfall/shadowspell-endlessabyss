@@ -41,10 +41,15 @@ namespace Dogabeey
         public bool keepAsOwnerChild = false;
         public virtual float Uptime => owner.Range / (owner.ProjectileSpeed * speedMultiplier);
 
+        internal Vector3 direction;
+        internal Rigidbody rb;
+
         private Tween movementTween;
 
         private void Start()
         {
+            rb = GetComponent<Rigidbody>();
+
             InitProjectile();
             if(Uptime > 0) FireProjectile();
             InvokeRepeating(nameof(OnTick), 0, tickTime);

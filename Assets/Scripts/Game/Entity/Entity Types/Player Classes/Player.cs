@@ -82,6 +82,7 @@ namespace Dogabeey
         public List<ProjectileSpeedModifier> projectileSpeedModifiers;
 
         internal List<EssenceInstance> essences = new List<EssenceInstance>();
+        internal Vector3 currentDirection;
 
         private float currentMana;
 
@@ -282,6 +283,11 @@ namespace Dogabeey
             {
                 damageImmunities.Remove(immunity);
             }
+        }
+
+        internal void AttackCurrentDirection()
+        {
+            ThrowProjectile(currentDirection);
         }
     }
 }

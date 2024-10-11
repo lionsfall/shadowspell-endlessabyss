@@ -9,6 +9,8 @@ TagManager:
   - Shadow
   - TempCamera
   - HP
+  - movementJoystick
+  - attackJoystick
   layers:
   - Default
   - TransparentFX

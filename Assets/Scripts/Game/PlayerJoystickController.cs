@@ -12,21 +12,31 @@ namespace Dogabeey
     {
         public float speedMultiplier = 1f;
         public float rotationSpeed = 10f;
+        [Header("Joystick Settings")]
+        public string movementJoystickTag = "MovementJoystick";
+        public string attackJoystickTag = "AttackJoystick";
 
         internal Vector3 direction;
 
         private Player player;
-        private Joystick joystick;
+        private Joystick movementJoystick, attackJoystick;
 
         private void Start()
         {
             player = GetComponent<Player>();
-            joystick = FindFirstObjectByType<Joystick>();
+            movementJoystick = FindObjectsByType<Joystick>(FindObjectsSortMode.None).FirstOrDefault(j => j.gameObject.tag == movementJoystickTag);
+            attackJoystick = FindObjectsByType<Joystick>(FindObjectsSortMode.None).FirstOrDefault(j => j.gameObject.tag == attackJoystickTag);
         }
 
         private void Update()
         {
-            direction = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+            MovementUpdate();
+            AttackUpdate();
+        }
+
+        private void MovementUpdate()
+        {
+            direction = new Vector3(movementJoystick.Horizontal, 0, movementJoystick.Vertical);
 
             player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
             if (player.targetCreature.GetCreature(player))
@@ -38,7 +48,7 @@ namespace Dogabeey
                 player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
             }
 
-            if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+            if (movementJoystick.Horizontal != 0 || movementJoystick.Vertical != 0)
             {
                 player.State = Entity.EntityState.Run;
 
@@ -49,6 +59,13 @@ namespace Dogabeey
 
                 player.rb.linearVelocity = Vector3.zero;
                 player.rb.angularVelocity = Vector3.zero;
+            }
+        }
+        public void AttackUpdate()
+        {
+            if (attackJoystick.Horizontal != 0 || attackJoystick.Vertical != 0)
+            {
+                player.currentDirection = new Vector3(attackJoystick.Horizontal, 0, attackJoystick.Vertical);
             }
         }
     }

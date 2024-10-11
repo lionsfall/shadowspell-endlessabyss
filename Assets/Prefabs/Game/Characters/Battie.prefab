@@ -117,7 +117,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  baseMaxHealth: 599
+  baseMaxHealth: 5
   baseDamage: 1
   baseAttackRate: 1
   baseRange: 5
@@ -138,6 +138,7 @@ MonoBehaviour:
   onKill:
     m_PersistentCalls:
       m_Calls: []
+  projectilePosition: {fileID: 0}
   projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
   essencePrefab: {fileID: 0}
   dropOffset: {x: 0, y: 0, z: 0}

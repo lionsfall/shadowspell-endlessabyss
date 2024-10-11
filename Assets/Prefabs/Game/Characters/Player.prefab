@@ -2856,6 +2856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 4
   rotationSpeed: 0
+  movementJoystickTag: movementJoystick
+  attackJoystickTag: attackJoystick
 --- !u!65 &276404461847055137
 BoxCollider:
   m_ObjectHideFlags: 0
