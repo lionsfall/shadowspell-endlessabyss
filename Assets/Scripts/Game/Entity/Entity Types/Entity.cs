@@ -194,6 +194,11 @@ namespace Dogabeey
             EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
             OnAttack(target);
         }
+        public virtual void Attack(Vector3 direction)
+        {
+            EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
+            OnAttack(null);
+        }
         public virtual void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
             EventManager.TriggerEvent(Const.GameEvents.CREATURE_DAMAGE, new EventParam(paramObj: gameObject));
@@ -227,10 +232,11 @@ namespace Dogabeey
         {
             if (projectilePrefab != null && direction.magnitude != 0)
             {
+                Debug.Log("Throwing projectile against " + direction + " with magnitude " + direction.magnitude);
                 Projectile p = Instantiate(ProjectileInstance, projectilePosition ? projectilePosition.position : transform.position, Quaternion.identity);
                 p.owner = this;
                 p.gameObject.SetActive(true);
-                p.transform.DOMove(p.transform.position + direction * p.maxRange, p.speedMultiplier).SetSpeedBased();
+                p.transform.DOMove(p.transform.position + direction * Range, p.speedMultiplier * AttackRate).SetSpeedBased();
             }
         }
 

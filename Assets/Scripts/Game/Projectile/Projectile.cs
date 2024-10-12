@@ -51,7 +51,6 @@ namespace Dogabeey
             rb = GetComponent<Rigidbody>();
 
             InitProjectile();
-            if(Uptime > 0) FireProjectile();
             InvokeRepeating(nameof(OnTick), 0, tickTime);
         }
 
@@ -78,14 +77,6 @@ namespace Dogabeey
 
         public void InitProjectile()
         {
-            if (keepAsOwnerChild)
-            {
-                transform.SetParent(owner.transform);
-            }
-            else
-            {
-                transform.SetParent(owner.transform.parent);
-            }
         }
 
         /// <summary>

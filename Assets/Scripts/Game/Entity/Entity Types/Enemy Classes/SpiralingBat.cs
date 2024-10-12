@@ -69,7 +69,6 @@ namespace Dogabeey
             Creature target = targetCreature.GetCreature(this);
             if(target)
             {
-                Debug.Log("Target is " + target.name);
                 State = EntityState.Run;
                 float distance = Vector3.Distance(transform.position, target.transform.position);
                 // If target is in range, attack

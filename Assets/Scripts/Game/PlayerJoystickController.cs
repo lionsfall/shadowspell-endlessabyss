@@ -39,14 +39,8 @@ namespace Dogabeey
             direction = new Vector3(movementJoystick.Horizontal, 0, movementJoystick.Vertical);
 
             player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
-            if (player.targetCreature.GetCreature(player))
-            {
-                player.transform.DOLookAt(player.targetCreature.GetCreature(player).transform.position, rotationSpeed);
-            }
-            else
-            {
-                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
-            }
+
+            //player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
 
             if (movementJoystick.Horizontal != 0 || movementJoystick.Vertical != 0)
             {

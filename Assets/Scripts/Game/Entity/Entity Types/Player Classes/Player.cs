@@ -163,10 +163,11 @@ namespace Dogabeey
         {
             while (true)
             {
-                Creature enemy = targetCreature.GetCreature(this);
-                if (enemy)
+                if (currentDirection != Vector3.zero)
                 {
-                    Attack(enemy);
+                    EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
+                    transform.DOLookAt(transform.position + currentDirection, 0);
+                    AttackCurrentDirection();
                 }
                 yield return new WaitForSeconds(AttackRate);
             }
@@ -199,16 +200,6 @@ namespace Dogabeey
         {
             base.OnAttack(target);
         }
-        public override void Attack(Entity target)
-        {
-            EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-            if(currentDirection != Vector3.zero)
-            {
-                transform.DOLookAt(transform.position + currentDirection, 0);
-                AttackCurrentDirection();
-            }
-        }
-
 
         public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {

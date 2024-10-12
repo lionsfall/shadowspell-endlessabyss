@@ -4967,7 +4967,7 @@ MonoBehaviour:
   target: {fileID: 0}
   projectileFlags: 0
   tickTime: 1
-  maxRange: 0
+  maxRange: 10
   speedMultiplier: 1
   keepAsOwnerChild: 0
 --- !u!54 &-5735593682996081013
