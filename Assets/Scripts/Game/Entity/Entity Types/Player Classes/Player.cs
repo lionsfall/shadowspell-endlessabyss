@@ -83,7 +83,7 @@ namespace Dogabeey
         public List<ProjectileSpeedModifier> projectileSpeedModifiers;
 
         internal List<EssenceInstance> essences = new List<EssenceInstance>();
-        internal Vector3 currentDirection;
+        internal Vector3 attackDirection;
 
         private float currentMana;
 
@@ -98,6 +98,8 @@ namespace Dogabeey
         public override float ProjectileSpeed => ProjectileSpeedModifier.CalculateValue(baseProjectileSpeed, projectileSpeedModifiers);
 
         public string SaveId => "Player";
+
+        private bool attacking;
 
         private void OnEnable()
         {
@@ -140,7 +142,6 @@ namespace Dogabeey
             CurrentMana = MaxMana;
             
 
-            StartCoroutine(AttackSequence());
 
             Instance = this;
 
@@ -151,6 +152,18 @@ namespace Dogabeey
         {
             // Quickly turn on-off player's mesh renderer based on invincibility duration.
             playerMesh.enabled = !IsInvincible || Time.time % 0.2f > 0.1f;
+
+            if (attackDirection.magnitude > 0.1f && !attacking)
+            {
+                attacking = true;
+                StartCoroutine(AttackSequence());
+            }
+            if(attackDirection.magnitude <= 0.1f && attacking)
+            {
+                attacking = false;
+                StopCoroutine(AttackSequence());
+            }
+
         }
 
         private void OnDrawGizmosSelected()
@@ -161,16 +174,10 @@ namespace Dogabeey
 
         private IEnumerator AttackSequence()
         {
-            while (true)
-            {
-                if (currentDirection != Vector3.zero)
-                {
-                    EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-                    transform.DOLookAt(transform.position + currentDirection, 0);
-                    AttackCurrentDirection();
-                }
-                yield return new WaitForSeconds(AttackRate);
-            }
+            EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
+            transform.DOLookAt(transform.position + attackDirection, 0);
+            AttackCurrentDirection();
+            yield return new WaitForSeconds(AttackRate);
         }
 
         public void AttackCurrentTarget()
@@ -283,7 +290,7 @@ namespace Dogabeey
 
         internal void AttackCurrentDirection()
         {
-            ThrowProjectile(currentDirection);
+            ThrowProjectile(attackDirection);
         }
     }
 }

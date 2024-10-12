@@ -2812,7 +2812,7 @@ MonoBehaviour:
   baseAttackRate: 1
   baseRange: 10
   baseSpeed: 1
-  baseProjectileSpeed: 1
+  baseProjectileSpeed: 3
   onHurt:
     m_PersistentCalls:
       m_Calls: []

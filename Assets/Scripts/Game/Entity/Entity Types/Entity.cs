@@ -236,7 +236,9 @@ namespace Dogabeey
                 Projectile p = Instantiate(ProjectileInstance, projectilePosition ? projectilePosition.position : transform.position, Quaternion.identity);
                 p.owner = this;
                 p.gameObject.SetActive(true);
-                p.transform.DOMove(p.transform.position + direction * Range, p.speedMultiplier * AttackRate).SetSpeedBased();
+                p.transform.DOMove(p.transform.position + direction * Range, p.speedMultiplier * ProjectileSpeed).SetEase(Ease.Linear).SetSpeedBased()
+                    .OnComplete(() => p.transform.DOMoveY(-0.2f, 0.1f).SetEase(Ease.OutExpo)
+                    .OnComplete(() => p.KillProjectile()));
             }
         }
 

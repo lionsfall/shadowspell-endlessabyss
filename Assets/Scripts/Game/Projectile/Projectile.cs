@@ -39,6 +39,9 @@ namespace Dogabeey
         [Tooltip("Speed multiplier for the projectile. 0 disables the movement entirely and generally should be used together with keepAsOwnerChild")]
         public float speedMultiplier = 1f;
         public bool keepAsOwnerChild = false;
+        [Space]
+        public ParticleSystem deathParticle;
+
         public virtual float Uptime => owner.Range / (owner.ProjectileSpeed * speedMultiplier);
 
         internal Vector3 direction;
@@ -79,31 +82,10 @@ namespace Dogabeey
         {
         }
 
-        /// <summary>
-        /// Fires the projectile agianst the target. If the target is null, the projectile will be fired in the direction of the owner. If projectile has homing flag, it will follow the target.
-        /// </summary>
-        public void FireProjectile()
-        {
-            OnFire();
-            //TODO: Implement fire logic
-            if (target != null)
-            {
-                // Send projectile towards the target
-                Vector3 towards = target.transform.position - transform.position;
-                movementTween = transform.DOMove(owner.transform.position + towards.normalized * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
-                    .SetEase(Ease.Linear)
-                    .OnComplete(() => Destroy(gameObject));
-            }
-            else
-            {
-                movementTween = transform.DOMove(owner.transform.position + owner.transform.forward * owner.Range, Uptime / Const.Values.PROJECTILE_SPEED)
-                    .SetEase(Ease.Linear)
-                    .OnComplete(() => Destroy(gameObject));
-            }
-
-        }
         public void FireStandaloneProjectile(Creature owner, Creature target)
         {
+            // TODO: Redo this using location as target.
+
             OnFire();
             //TODO: Implement fire logic
             if (target != null)
@@ -151,6 +133,12 @@ namespace Dogabeey
         public virtual void OnHit()
         {
             onHit.ForEach(o => o.Invoke(this));
+        }
+
+        internal void KillProjectile()
+        {
+            Instantiate(deathParticle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
