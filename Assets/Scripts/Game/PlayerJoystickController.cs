@@ -10,6 +10,7 @@ namespace Dogabeey
     [RequireComponent(typeof(Player))]
     public class PlayerJoystickController : MonoBehaviour
     {
+        public InputSystem_Actions inputActions;
         public float speedMultiplier = 1f;
         public float rotationSpeed = 10f;
         [Header("Joystick Settings")]
@@ -20,6 +21,37 @@ namespace Dogabeey
 
         private Player player;
         private Joystick movementJoystick, attackJoystick;
+        private Vector2 inputLeftAxis, inputRightAxis;
+
+        private void OnEnable()
+        {
+            inputActions.Player.Move.performed += Move_performed;
+            inputActions.Player.Look.performed += Look_performed;
+
+        }
+        private void OnDisable()
+        {
+            inputActions.Player.Move.performed -= Move_performed;
+            inputActions.Player.Look.performed -= Look_performed;
+        }
+
+        private void Look_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            inputRightAxis = obj.ReadValue<Vector2>();
+        }
+
+        private void Awake()
+        {
+            inputActions = new InputSystem_Actions();
+            inputActions.Enable();
+        }
+
+
+        private void Move_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            inputLeftAxis = obj.ReadValue<Vector2>();
+        }
+
 
         private void Start()
         {
@@ -30,19 +62,48 @@ namespace Dogabeey
 
         private void Update()
         {
+            ControlUpdate();
             MovementUpdate();
-            AttackUpdate();
+            DirectionUpdate();
         }
 
+        private void ControlUpdate()
+        {
+            if(movementJoystick.hasInput)
+            {
+                direction = new Vector3(movementJoystick.Horizontal, 0, movementJoystick.Vertical);
+            }
+            else if(inputLeftAxis.magnitude > 0.01f)
+            {
+                // Use new input system
+                direction = new Vector3(inputLeftAxis.x, 0, inputLeftAxis.y);
+            }
+            else
+            {
+                direction = Vector3.zero;
+            }
+
+            if(attackJoystick.hasInput)
+            {
+                player.attackDirection = new Vector3(attackJoystick.Horizontal, 0, attackJoystick.Vertical);
+            }
+            else if(inputRightAxis.magnitude > 0.01f)
+            {
+                // Use new input system
+                player.attackDirection = new Vector3(inputRightAxis.x, 0, inputRightAxis.y);
+            }
+            else
+            {
+                player.attackDirection = Vector3.zero;
+            }
+        }
         private void MovementUpdate()
         {
-            direction = new Vector3(movementJoystick.Horizontal, 0, movementJoystick.Vertical);
-
             player.rb.MovePosition(player.rb.position + direction.normalized * player.Speed * speedMultiplier * Time.deltaTime);
 
             //player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
 
-            if (movementJoystick.Horizontal != 0 || movementJoystick.Vertical != 0)
+            if (direction.magnitude > 0.01f)
             {
                 player.State = Entity.EntityState.Run;
 
@@ -55,9 +116,16 @@ namespace Dogabeey
                 player.rb.angularVelocity = Vector3.zero;
             }
         }
-        public void AttackUpdate()
+        private void DirectionUpdate()
         {
-            player.attackDirection = new Vector3(attackJoystick.Horizontal, 0, attackJoystick.Vertical);
+            if(direction.magnitude > 0.01f)
+            {
+                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
+            }
+            else if(player.attackDirection.magnitude > 0.01f)
+            {
+                player.transform.DOLookAt(player.transform.position + player.attackDirection, rotationSpeed);
+            }
         }
     }
 }

@@ -174,10 +174,12 @@ namespace Dogabeey
 
         private IEnumerator AttackSequence()
         {
-            EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-            transform.DOLookAt(transform.position + attackDirection, 0);
-            AttackCurrentDirection();
-            yield return new WaitForSeconds(AttackRate);
+            while(attackDirection.magnitude > 0.1f)
+            {
+                EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
+                AttackCurrentDirection();
+                yield return new WaitForSeconds(1 / AttackRate);
+            }
         }
 
         public void AttackCurrentTarget()
