@@ -28,17 +28,21 @@ namespace Dogabeey
             inputActions.Player.Move.performed += Move_performed;
             inputActions.Player.Look.performed += Look_performed;
 
+            inputActions.Player.Move.canceled += Move_canceled;
+            inputActions.Player.Look.canceled += Look_canceled;
+
         }
+
+
         private void OnDisable()
         {
             inputActions.Player.Move.performed -= Move_performed;
             inputActions.Player.Look.performed -= Look_performed;
+
+            inputActions.Player.Move.canceled -= Move_canceled;
+            inputActions.Player.Look.canceled -= Look_canceled;
         }
 
-        private void Look_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-        {
-            inputRightAxis = obj.ReadValue<Vector2>();
-        }
 
         private void Awake()
         {
@@ -47,6 +51,18 @@ namespace Dogabeey
         }
 
 
+        private void Look_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            inputRightAxis = Vector2.zero;
+        }
+        private void Look_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            inputRightAxis = obj.ReadValue<Vector2>();
+        }
+        private void Move_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            inputLeftAxis = Vector2.zero;
+        }
         private void Move_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             inputLeftAxis = obj.ReadValue<Vector2>();
