@@ -2811,8 +2811,8 @@ MonoBehaviour:
   baseDamage: 1
   baseAttackRate: 2
   baseRange: 10
-  baseSpeed: 1
-  baseProjectileSpeed: 3
+  baseSpeed: 5
+  baseProjectileSpeed: 5
   onHurt:
     m_PersistentCalls:
       m_Calls: []
@@ -2854,7 +2854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adacbb59d96b604409ba2c4b3b05da9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 6
+  speedMultiplier: 1
   rotationSpeed: 0
   movementJoystickTag: movementJoystick
   attackJoystickTag: attackJoystick

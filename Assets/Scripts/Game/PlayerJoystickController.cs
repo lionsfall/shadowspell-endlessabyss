@@ -134,13 +134,13 @@ namespace Dogabeey
         }
         private void DirectionUpdate()
         {
-            if(direction.magnitude > 0.01f)
-            {
-                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
-            }
-            else if(player.attackDirection.magnitude > 0.01f)
+            if(player.attackDirection.magnitude > 0.01f)
             {
                 player.transform.DOLookAt(player.transform.position + player.attackDirection, rotationSpeed);
+            }
+            else if( direction.magnitude > 0.01f)
+            {
+                player.transform.DOLookAt(player.transform.position + direction, rotationSpeed);
             }
         }
     }
