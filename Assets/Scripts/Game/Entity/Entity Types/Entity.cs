@@ -135,7 +135,7 @@ namespace Dogabeey
         public abstract float Speed { get; }
         public abstract float ProjectileSpeed { get; }
 
-        protected virtual float InvincibilityDuration => 0.1f;
+        protected virtual float InvincibilityDuration => 1f;
         
         internal bool IsInvincible => Time.time - lastHurtTime < InvincibilityDuration;
 
@@ -206,8 +206,6 @@ namespace Dogabeey
             lastDamager = damageSource;
             CurrentHealth -= damage;
             lastHurtTime = Time.time;
-
-            
         }
 
         internal virtual void Heal(float healAmount)
