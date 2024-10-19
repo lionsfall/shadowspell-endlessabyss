@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
 
 namespace Dogabeey
 {
@@ -161,6 +160,7 @@ namespace Dogabeey
             base.Start();
             StartCoroutine(AttackSequence());
         }
+
         public override void AIUpdate()
         {
             Creature target = targetCreature.GetCreature(this);
@@ -187,6 +187,14 @@ namespace Dogabeey
                 Debug.Log("Target is null");
                 State = EntityState.Idle;
                 EnemyState = EnemyState.Idle;
+            }
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("Player collision");
+            if (collision.gameObject.TryGetComponent(out EnemyEntity enemy))
+            {
+                Hurt(enemy, Damage, DamageType.Contact);
             }
         }
 
