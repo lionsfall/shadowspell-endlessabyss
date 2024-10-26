@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using UnityEngine.Animations;
+using UnityEngine.UI;
 
 namespace Dogabeey
 {
@@ -64,7 +66,8 @@ namespace Dogabeey
         }
 
         [Header("Player References")]
-        public MeshRenderer playerMesh;
+        public Renderer playerMesh;
+        public Image overlayBlood;
         [FoldoutGroup("Player Stat Modifiers")]
         public List<MaxHealthModifier> maxHealthModifiers;
         [FoldoutGroup("Player Stat Modifiers")]
@@ -151,7 +154,14 @@ namespace Dogabeey
         private void Update()
         {
             // Quickly turn on-off player's mesh renderer based on invincibility duration.
-            playerMesh.enabled = !IsInvincible || Time.time % 0.2f > 0.1f;
+            if(IsInvincible)
+            {
+                playerMesh.enabled = Time.time % 0.2f > 0.1f;
+            }
+            else
+            {
+                playerMesh.enabled = true;
+            }
 
             if (attackDirection.magnitude > 0.1f && !attacking)
             {
@@ -194,11 +204,15 @@ namespace Dogabeey
         public override void OnHurt(Entity damageSource, float damage)
         {
             base.OnHurt(damageSource, damage);
+            EventManager.TriggerEvent(Const.GameEvents.PLAYER_HEALTH_CHANGED);
         }
         public override void OnDeath(Entity killer)
         {
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             base.OnDeath(killer);
-            Destroy(gameObject);
+            enabled = false;
+            
             EventManager.TriggerEvent(Const.GameEvents.LEVEL_FAILED);
         }
         public override void OnDamage(Entity target, float damage)
@@ -209,7 +223,11 @@ namespace Dogabeey
         {
             base.OnAttack(target);
         }
-
+        internal override void Heal(float healAmount)
+        {
+            base.Heal(healAmount);
+            EventManager.TriggerEvent(Const.GameEvents.PLAYER_HEALTH_CHANGED);
+        }
         public override void Hurt(Entity damageSource, float damage, DamageType damageType)
         {
             // If has counted immunity against this damage type, don't execute the hurt and Remove its stack by 1.
@@ -219,11 +237,20 @@ namespace Dogabeey
                 RemoveImmunityCount(damageType, 1);
                 return;
             }
-            else
+            else if(!IsInvincible)
             {
                 base.Hurt(damageSource, damage, damageType);
+                HurtEffect();
             }
         }
+
+        private void HurtEffect()
+        {
+            Camera.main.DOShakeRotation(0.25f, 0.5f, 5, 0, false).SetUpdate(true);
+            DOVirtual.Float(0f, 0.33f, 0.75f, (x) => Time.timeScale = x).SetUpdate(true).SetEase(Ease.InExpo).OnComplete(() => Time.timeScale = 1f);
+            overlayBlood.DOFade(1f, 0.2f).SetUpdate(true).OnComplete(() => overlayBlood.DOFade(0f, 0.8f).SetUpdate(true));
+        }
+
         public void AcquireEssence(Essence essence)
         {
 
