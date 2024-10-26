@@ -25,6 +25,8 @@ namespace Dogabeey
         public List<Essence.EssenceDrop> dropPool;
         [FoldoutGroup("Enemy-Specific Settings")]
         public SkinnedMeshRenderer enemyMesh;
+        [FoldoutGroup("Enemy-Specific Settings")]
+        public float contactDamage = 1;
 
         internal NavMeshAgent agent;
         protected EnemyState enemyState;
@@ -33,6 +35,16 @@ namespace Dogabeey
         {
             base.Start();
             agent = GetComponent<NavMeshAgent>();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(contactDamage > 0)
+            {
+                if (collision.gameObject.TryGetComponent(out Player player))
+                {
+                    player.Hurt(this, contactDamage, DamageType.Contact);
+                }
+            }
         }
 
         public override void OnDeath(Entity killer)
