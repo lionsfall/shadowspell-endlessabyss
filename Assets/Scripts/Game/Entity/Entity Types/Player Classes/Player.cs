@@ -208,8 +208,11 @@ namespace Dogabeey
         }
         public override void OnDeath(Entity killer)
         {
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             base.OnDeath(killer);
-            Destroy(gameObject);
+            enabled = false;
+            
             EventManager.TriggerEvent(Const.GameEvents.LEVEL_FAILED);
         }
         public override void OnDamage(Entity target, float damage)

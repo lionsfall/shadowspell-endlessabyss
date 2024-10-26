@@ -31,9 +31,8 @@ namespace Dogabeey
             inputActions.Player.Move.canceled += Move_canceled;
             inputActions.Player.Look.canceled += Look_canceled;
 
+            EventManager.StartListening(Const.GameEvents.CREATURE_DEATH, OnPlayerDeath);
         }
-
-
         private void OnDisable()
         {
             inputActions.Player.Move.performed -= Move_performed;
@@ -41,6 +40,12 @@ namespace Dogabeey
 
             inputActions.Player.Move.canceled -= Move_canceled;
             inputActions.Player.Look.canceled -= Look_canceled;
+
+            EventManager.StopListening(Const.GameEvents.CREATURE_DEATH, OnPlayerDeath);
+        }
+        private void OnPlayerDeath(EventParam e)
+        {
+            enabled = false;
         }
 
 

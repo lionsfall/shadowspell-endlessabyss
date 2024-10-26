@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 namespace Dogabeey
 {
@@ -27,41 +24,10 @@ namespace Dogabeey
             player = Player.Instance;
 
             InitUI();
-            DrawUI();
         }
-        private void OnEnable()
-        {
-            EventManager.StartListening(Const.GameEvents.PLAYER_HEALTH_CHANGED, OnPlayerHeartChanged);
-        }
-        private void OnDisable()
-        {
-            EventManager.StopListening(Const.GameEvents.PLAYER_HEALTH_CHANGED, OnPlayerHeartChanged);
-        }
-        private void OnPlayerHeartChanged(EventParam e)
-        {
-            int oldHealth = hearts.Count;
-            int newHealth = (int) player.CurrentHealth;
-            int difference = newHealth - oldHealth;
-            if (difference < 0)
-            {
-                for (int i = hearts.Count - 1; i >= hearts.Count - difference; i--)
-                {
-                    DestroyEffect(hearts[i]);
-                }
-            }
-            Invoke(nameof(DrawUI), 0.1f);
-        }
-
-        private void DestroyEffect(Image heart)
-        {
-            hearts.Remove(heart);
-            heart.transform.DOScale(2, 0.5f).OnComplete(() => Destroy(heart.gameObject));
-            heart.DOFade(0, 0.5f);
-        }
-
         private void Update()
         {
-            //DrawUI();
+            DrawUI();
         }
         public void InitUI()
         {
