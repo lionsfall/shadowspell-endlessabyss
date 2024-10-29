@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 423422}
   - component: {fileID: 3316062}
   - component: {fileID: 2355510}
+  - component: {fileID: -1508533923222074185}
   m_Layer: 0
   m_Name: SM_Env_CrackedRock_01
   m_TagString: Untagged
@@ -86,3 +87,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-1508533923222074185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.84721, y: 0.59809136, z: 12.547563}
+  m_Center: {x: -4.8628635, y: 0.26534855, z: 5.179849}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 436162}
   - component: {fileID: 3352060}
   - component: {fileID: 2323392}
+  - component: {fileID: -1920263223596426662}
   m_Layer: 0
   m_Name: SM_Env_Sewer_Canal_Corner_01
   m_TagString: Untagged
@@ -86,3 +87,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-1920263223596426662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188134}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.138666, y: 1.2520145, z: 5.138674}
+  m_Center: {x: -2.551036, y: -0.46169534, z: 2.4489603}

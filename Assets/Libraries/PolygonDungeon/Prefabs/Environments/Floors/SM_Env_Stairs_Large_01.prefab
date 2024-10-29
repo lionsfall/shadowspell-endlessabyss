@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 447894}
   - component: {fileID: 3399196}
   - component: {fileID: 2396176}
+  - component: {fileID: 8196807621753025533}
   m_Layer: 0
   m_Name: SM_Env_Stairs_Large_01
   m_TagString: Untagged
@@ -86,3 +87,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8196807621753025533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.792534, y: 5.0223603, z: 8.774723}
+  m_Center: {x: -0.0000038146973, y: 2.5111802, z: 0.0000019073486}
