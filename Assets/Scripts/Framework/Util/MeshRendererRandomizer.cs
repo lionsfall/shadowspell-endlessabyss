@@ -6,38 +6,25 @@ using UnityEngine;
 
 public class MeshRendererRandomizer : MonoBehaviour
 {
-    public float offsetMultiplier = 0.25f;
-    [MinMaxSlider(0, 3, true)]
-    public Vector2Int randomRange = new Vector2Int(0, 3);
+    public List<MeshRenderer> meshRenderers;
+    public bool randomizeRotations;
 
-    private MeshRenderer meshRenderer;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        if (meshRenderer != null)
-        {
-            Material[] materials = meshRenderer.materials;
-            for (int i = 0; i < materials.Length; i++)
-            {
-                materials[i].mainTextureOffset = new Vector2(Random.Range(randomRange.x, randomRange.y) * offsetMultiplier, Random.Range(randomRange.x, randomRange.y) * offsetMultiplier);
-            }
-        }
+        Randomize();
     }
-
-    private void OnValidate()
+    public void Randomize()
     {
-        if (meshRenderer != null)
+        foreach (var meshRenderer in meshRenderers)
         {
-            Material[] materials = meshRenderer.materials;
-            meshRenderer.material.DOTiling(Vector2.one * offsetMultiplier, 0);
-            meshRenderer.material.DOOffset(new Vector2(Random.Range(randomRange.x, randomRange.y) * offsetMultiplier, Random.Range(randomRange.x, randomRange.y) * offsetMultiplier), 0);
+            meshRenderer.gameObject.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        meshRenderers.GetRandomElement().gameObject.SetActive(true);
+        //Randomize the rotation from the four main directions
+        if (randomizeRotations)
+        {
+            transform.DORotate(new Vector3(0, Random.Range(0, 4) * 90, 0), 0.5f);
+        }
     }
 }
