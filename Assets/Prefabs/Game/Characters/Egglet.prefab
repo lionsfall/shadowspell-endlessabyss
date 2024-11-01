@@ -17,20 +17,24 @@ PrefabInstance:
       value: Egglet
       objectReference: {fileID: 0}
     - target: {fileID: 7206380932057538711, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206380932057538711, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: referenceCreature
       value: 
       objectReference: {fileID: 8721953186620204884}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.06703186
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 16.299168
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalRotation.y
@@ -46,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -59,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825737054757335757, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3850408813259497280, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
@@ -123,7 +131,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   projectilePosition: {fileID: 5806505724991814111}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
   essencePrefab: {fileID: 0}
   dropOffset: {x: 0, y: 0, z: 0}
   essenceDropRate: 0

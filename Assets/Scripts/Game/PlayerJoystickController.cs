@@ -45,7 +45,10 @@ namespace Dogabeey
         }
         private void OnPlayerDeath(EventParam e)
         {
-            enabled = false;
+            if(e.paramObj.TryGetComponent(out Player _))
+            {
+                enabled = false;
+            }
         }
 
 

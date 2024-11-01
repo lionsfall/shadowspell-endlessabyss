@@ -25,9 +25,9 @@ namespace Dogabeey
         }
         private void OnCreatureDied(EventParam e)
         {
-            if (e.paramObj.GetHashCode() == referenceCreature.gameObject.GetHashCode())
+            if (e.paramObj == referenceCreature.gameObject)
             {
-                Destroy(gameObject);
+                Destroy(healthImage.gameObject);
             }
         }
 
