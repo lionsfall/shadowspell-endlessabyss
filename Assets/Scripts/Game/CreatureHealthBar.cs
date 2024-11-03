@@ -27,7 +27,7 @@ namespace Dogabeey
         {
             if (e.paramObj == referenceCreature.gameObject)
             {
-                Destroy(healthImage.gameObject);
+                Destroy(healthBarRef.gameObject);
             }
         }
 
