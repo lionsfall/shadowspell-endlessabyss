@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 8721953186620204884}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06703186
+      value: 5.67599
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.299168
+      value: 14.902464
       objectReference: {fileID: 0}
     - target: {fileID: 7342206175360265483, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -132,10 +132,12 @@ MonoBehaviour:
       m_Calls: []
   projectilePosition: {fileID: 5806505724991814111}
   projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
-  essencePrefab: {fileID: 0}
+  essencePrefab: {fileID: 5599279708850110741, guid: f9b88272a15aa78409e560e4de70b823, type: 3}
   dropOffset: {x: 0, y: 0, z: 0}
-  essenceDropRate: 0
-  dropPool: []
+  essenceDropRate: 0.214
+  dropPool:
+  - essence: {fileID: 11400000, guid: 69e88f6301284a44fa5ba3b881108c11, type: 2}
+    dropWeight: 1
   enemyMesh: {fileID: 5806505724997511423}
   contactDamage: 1
 --- !u!4 &5806505724991814111 stripped
