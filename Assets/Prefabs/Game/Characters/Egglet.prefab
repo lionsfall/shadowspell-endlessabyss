@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7825737054757335757, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 720
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3850408813259497280, guid: ff31cc6be166d0b459838ca6a510ba97, type: 3}
     m_RemovedGameObjects: []

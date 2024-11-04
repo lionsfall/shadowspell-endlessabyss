@@ -86,7 +86,16 @@ namespace Dogabeey
         public virtual void AIUpdate()
         {
             agent.speed = Speed;
+            agent.updateRotation = false;
+            if(agent.hasPath)
+            {
+                agent.transform.LookAt(agent.destination);
+            }
         }
+
+        #region Helper Functions
+
+        #endregion
     }
 
     public enum EnemyState
