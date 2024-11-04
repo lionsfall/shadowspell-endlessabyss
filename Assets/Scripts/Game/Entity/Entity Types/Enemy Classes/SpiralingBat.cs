@@ -64,6 +64,7 @@ namespace Dogabeey
         }
         public override void AIUpdate()
         {
+            base.AIUpdate();
 
             Creature target = targetCreature.GetCreature(this);
             if(target)

@@ -83,7 +83,10 @@ namespace Dogabeey
         /// You should also set the State and enemyState variables here based on the enemy's current action. enemyState is just there to help you make the AI logic easier.
         /// State is used to trigger the animations and other events.
         /// </summary>
-        public abstract void AIUpdate();
+        public virtual void AIUpdate()
+        {
+            agent.speed = Speed;
+        }
     }
 
     public enum EnemyState

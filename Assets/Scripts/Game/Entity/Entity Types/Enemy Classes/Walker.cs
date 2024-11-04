@@ -44,9 +44,12 @@ namespace Dogabeey
         }
         public override void AIUpdate()
         {
+            base.AIUpdate();
+
             Creature target = targetCreature.GetCreature(this);
             if(target)
             {
+
                 Debug.Log("Target is " + target.name);
                 State = EntityState.Run;
                 float distance = Vector3.Distance(transform.position, target.transform.position);
@@ -60,14 +63,17 @@ namespace Dogabeey
                     EnemyState = EnemyState.Chase;
                 }
 
-                transform.DOMove(target.transform.position, distance / Speed);
-                transform.DOLookAt(target.transform.position, 0.1f);
+
+                agent.isStopped = false;
+                agent.SetDestination(target.transform.position);
             }
             else
             {
                 Debug.Log("Target is null");
                 State = EntityState.Idle;
                 EnemyState = EnemyState.Idle;
+
+                agent.isStopped = true;
             }
         }
 

@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3305656}
   - component: {fileID: 2364974}
   - component: {fileID: 2849002479701034359}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_Pillar_Large_01_Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &436056
 Transform:
@@ -121,12 +121,12 @@ GameObject:
   - component: {fileID: 998500404950940313}
   - component: {fileID: 1112339646429504592}
   - component: {fileID: 114993080752640193}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6914494922110481132
 Transform:
