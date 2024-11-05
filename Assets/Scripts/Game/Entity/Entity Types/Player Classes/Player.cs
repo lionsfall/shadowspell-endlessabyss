@@ -247,7 +247,7 @@ namespace Dogabeey
         private void HurtEffect()
         {
             Camera.main.DOShakeRotation(0.25f, 0.5f, 5, 0, false).SetUpdate(true);
-            DOVirtual.Float(0f, 0.33f, 0.75f, (x) => Time.timeScale = x).SetUpdate(true).SetEase(Ease.InExpo).OnComplete(() => Time.timeScale = 1f);
+            DOVirtual.Float(0.5f, 1, 0.75f, (x) => Time.timeScale = x).SetUpdate(true);
             overlayBlood.DOFade(1f, 0.2f).SetUpdate(true).OnComplete(() => overlayBlood.DOFade(0f, 0.8f).SetUpdate(true));
         }
 
