@@ -26,14 +26,23 @@ namespace Dogabeey
             screens.ForEach(screen => screen.gameObject.SetActive(false));
             ShowScreen(gameScreen);
         }
-
         public void Show(Screens screenID)
         {
             screens.ForEach(screen => screen.gameObject.SetActive(false));
             GameScreen gameScreen = screens.Find(screen => screen.screenID == screenID);
             ShowScreen(gameScreen);
         }
-        public void CloseAllScreens()
+        public void Hide(GameScreen gameScreen)
+        {
+            gameScreen.gameObject.SetActive(false);
+        }
+        public void Hide(Screens screenID)
+        {
+            GameScreen gameScreen = screens.Find(screen => screen.screenID == screenID);
+            gameScreen.gameObject.SetActive(false);
+        }
+
+        public void HideAllScreens()
         {
             screens.ForEach(screen => screen.gameObject.SetActive(false));
         }

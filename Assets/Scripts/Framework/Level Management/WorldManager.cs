@@ -75,6 +75,7 @@ namespace Dogabeey
         }
         public void EndCurrentLevel()
         {
+            ScreenManager.Instance.HideAllScreens();
             if (World.Instance.CurrentLevel != null)
             {
                 Destroy(World.Instance.CurrentLevel.gameObject);
