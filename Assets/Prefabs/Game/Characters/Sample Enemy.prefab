@@ -288,6 +288,7 @@ MonoBehaviour:
   onKill:
     m_PersistentCalls:
       m_Calls: []
+  projectilePosition: {fileID: 0}
   projectilePrefab: {fileID: 8443879711127416632, guid: 9777312f8d2829d47875a451ef6e45f6, type: 3}
   essencePrefab: {fileID: 5599279708850110741, guid: f9b88272a15aa78409e560e4de70b823, type: 3}
   dropOffset: {x: 0, y: 0.5, z: 0}
@@ -296,6 +297,7 @@ MonoBehaviour:
   - essence: {fileID: 11400000, guid: a6905c0d82f35c04da817c5cb8193b62, type: 2}
     dropWeight: 1
   enemyMesh: {fileID: 1765894611520664219}
+  contactDamage: 1
 --- !u!195 &7825737054757335757
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -332,8 +334,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarRef: {fileID: 2418673775000556651}
   referenceCreature: {fileID: 3850408813259497280}
-  healthBarPositionOffset: {x: 0, y: 250}
-  scaleOffset: 3
+  healthBarPositionOffset: {x: 0, y: 120}
+  scaleOffset: 1.2
   healthImage: {fileID: 2587684212338709555}
   canvasTag: HP
 --- !u!114 &5997352903102514711

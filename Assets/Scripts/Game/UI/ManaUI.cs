@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,16 +19,32 @@ namespace Dogabeey
 
         public override string FireEvent => Const.GameEvents.PLAYER_MANA_CHANGED;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            EventManager.StartListening(Const.GameEvents.LEVEL_STARTED, OnLevelStarted);
+        }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            EventManager.StopListening(Const.GameEvents.LEVEL_STARTED, OnLevelStarted);
+        }
+        public void OnLevelStarted(EventParam e)
+        {
+            DOVirtual.DelayedCall(0.1f, () => player = Player.Instance);
+        }
+
         private IEnumerator Start()
         {
             yield return new WaitUntil(() => Player.Instance != null);
             player = Player.Instance;
 
             InitUI();
-            DrawUI();
         }
         private void Update()
         {
+            if (player == null)
+                return;
 
             DrawUI();
         }

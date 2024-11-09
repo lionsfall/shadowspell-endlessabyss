@@ -10,11 +10,11 @@ public abstract class UIElement : MonoBehaviour
     [ValueDropdown("GetStructElementsAsStrings", AppendNextDrawer = true)]
     public abstract string FireEvent { get; }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         EventManager.StartListening(FireEvent, OnEvent);
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         EventManager.StopListening(FireEvent, OnEvent);
     }

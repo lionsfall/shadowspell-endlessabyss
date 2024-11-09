@@ -22,6 +22,7 @@ namespace Dogabeey
         private void OnDisable()
         {
             EventManager.StopListening(Const.GameEvents.CREATURE_DEATH, OnCreatureDied);
+            Destroy(healthBarRef.gameObject);
         }
         private void OnCreatureDied(EventParam e)
         {
