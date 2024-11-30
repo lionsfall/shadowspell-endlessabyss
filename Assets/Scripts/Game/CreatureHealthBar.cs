@@ -55,6 +55,7 @@ namespace Dogabeey
             healthBarRef.transform.position = Camera.main.WorldToScreenPoint(referenceCreature.transform.position) + (Vector3)healthBarPositionOffset;
 
             healthImage.fillAmount = referenceCreature.CurrentHealth / referenceCreature.MaxHealth;
+            healthBarRef.gameObject.SetActive(referenceCreature.CurrentHealth < referenceCreature.MaxHealth);
         }
     }
 }

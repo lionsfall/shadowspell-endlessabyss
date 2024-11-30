@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 476952}
   - component: {fileID: 3396498}
   - component: {fileID: 2390558}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_Pillar_Large_Broken_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

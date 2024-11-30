@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 493194}
   - component: {fileID: 3370334}
   - component: {fileID: 2389522}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_Alcove_Small_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400616}
   - component: {fileID: 3346856}
   - component: {fileID: 2389588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_Culled_01_Alt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

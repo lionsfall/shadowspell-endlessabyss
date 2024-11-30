@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 481812}
   - component: {fileID: 3316490}
   - component: {fileID: 2388182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Door_Large_Frame_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

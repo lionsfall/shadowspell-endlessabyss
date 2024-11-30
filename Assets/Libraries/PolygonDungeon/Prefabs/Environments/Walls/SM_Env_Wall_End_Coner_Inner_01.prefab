@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 404728}
   - component: {fileID: 3364504}
   - component: {fileID: 2353884}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_End_Coner_Inner_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

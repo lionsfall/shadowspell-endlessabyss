@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 452850}
   - component: {fileID: 3379596}
   - component: {fileID: 2302144}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Door_Large_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

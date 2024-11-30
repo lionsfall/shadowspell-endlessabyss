@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 411578}
   - component: {fileID: 3339142}
   - component: {fileID: 2368434}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_DoorDouble_Flat_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

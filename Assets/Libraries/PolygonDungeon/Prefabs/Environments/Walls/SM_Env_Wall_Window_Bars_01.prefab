@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 403192}
   - component: {fileID: 3361234}
   - component: {fileID: 2303742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_Window_Bars_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 471282}
   - component: {fileID: 3333582}
   - component: {fileID: 2312466}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Env_Wall_Fireplace_Gap_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

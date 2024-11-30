@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.15232289, g: 0.16758633, b: 0.1981132, a: 1}
+  m_AmbientSkyColor: {r: 0.2538715, g: 0.27931058, b: 0.3301887, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -6980,7 +6980,7 @@ PrefabInstance:
     - target: {fileID: 7722314759128445691, guid: e4052a4b50fee524d98d042dbbd13183, type: 3}
       propertyPath: 'levelScenes.Array.data[0]'
       value: 
-      objectReference: {fileID: 8150175311825758849, guid: 620660a854aba43498bd221fda9290fa, type: 3}
+      objectReference: {fileID: 8150175311825758849, guid: d8a0e308d3aed3b41896afdad1cf2f8e, type: 3}
     - target: {fileID: 7722314759128445691, guid: e4052a4b50fee524d98d042dbbd13183, type: 3}
       propertyPath: 'levelScenes.Array.data[1]'
       value: 
