@@ -151,6 +151,8 @@ namespace Dogabeey
             InvokeRepeating(nameof(TickEssences), 1f, 1f);
 
         }
+
+        private float attackCooldown;
         private void Update()
         {
             // Quickly turn on-off player's mesh renderer based on invincibility duration.
@@ -163,17 +165,7 @@ namespace Dogabeey
                 playerMesh.enabled = true;
             }
 
-            if (attackDirection.magnitude > 0.1f && !attacking)
-            {
-                attacking = true;
-                StartCoroutine(AttackSequence());
-            }
-            if(attackDirection.magnitude <= 0.1f && attacking)
-            {
-                attacking = false;
-                StopCoroutine(AttackSequence());
-            }
-
+            AttackSequence();
         }
 
         private void OnDrawGizmosSelected()
@@ -182,13 +174,30 @@ namespace Dogabeey
             Gizmos.DrawWireSphere(transform.position, Range);
         }
 
-        private IEnumerator AttackSequence()
+        private void AttackSequence()
         {
-            while(attackDirection.magnitude > 0.1f)
+            // Reduce the cooldown timer each frame
+            attackCooldown -= Time.deltaTime;
+
+            // Check if the attack condition is met
+            if (attackDirection.magnitude > 0.1f)
             {
-                EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
-                AttackCurrentDirection();
-                yield return new WaitForSeconds(1 / AttackRate);
+                if (!attacking)
+                {
+                    attacking = true; // Start attacking
+                }
+
+                // Perform an attack if the cooldown has elapsed
+                if (attackCooldown <= 0f)
+                {
+                    EventManager.TriggerEvent(Const.GameEvents.CREATURE_ATTACK, new EventParam(paramObj: gameObject));
+                    AttackCurrentDirection();
+                    attackCooldown = 1f / AttackRate; // Reset cooldown
+                }
+            }
+            else
+            {
+                attacking = false; // Stop attacking
             }
         }
 
