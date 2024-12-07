@@ -4129,31 +4129,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.6089396
+      value: 5.92
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.68
+      value: 19.16
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.2267036
+      value: -11.18
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.78238654
+      value: 0.85414135
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.62279314
+      value: 0.520041
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4161,7 +4161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 763665953176220216, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 77.041
+      value: 62.67
       objectReference: {fileID: 0}
     - target: {fileID: 3930519526556714707, guid: 4fc2a4e35f3f6544ab4094dd531ba0a2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4339,8 +4339,8 @@ PositionConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: 5.2926774, y: 22.99, z: -7.0617294}
-  m_TranslationOffset: {x: 0, y: 22.68, z: -5.83}
+  m_TranslationAtRest: {x: 5.92, y: 19.16, z: -11.18}
+  m_TranslationOffset: {x: 0.31106043, y: 19.16, z: -9.783297}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
