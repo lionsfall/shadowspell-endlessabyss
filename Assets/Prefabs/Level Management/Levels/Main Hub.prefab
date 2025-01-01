@@ -271,9 +271,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7f4c463d92710e64f87d15144878c906, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: a45205f99651ae24ab49956b766aef9f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &4100290867877073696
 GameObject:
@@ -378,8 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5120543934254136594}
-  - component: {fileID: 8150175311825758849}
-  - component: {fileID: 5697706280711501034}
+  - component: {fileID: 8805098493422405413}
   m_Layer: 0
   m_Name: Main Hub
   m_TagString: Untagged
@@ -413,7 +412,7 @@ Transform:
   - {fileID: 7762158327531872294}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8150175311825758849
+--- !u!114 &8805098493422405413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,35 +421,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5120543934254136597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a59566781b86a438e55bddbdc53974, type: 3}
+  m_Script: {fileID: 11500000, guid: eabd8478b814ed743a517b2913ffe405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWin: 0
-  isLose: 0
-  isEnded: 0
-  levelName: 
---- !u!95 &5697706280711501034
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5120543934254136597}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c729bfd669c186f4b9ab6ad6994dc806, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  dontDestroyOnLoad: 1
+  unlockableZones: []
+  hubStartPoint: {fileID: 0}
 --- !u!1 &5821180565261088150
 GameObject:
   m_ObjectHideFlags: 0

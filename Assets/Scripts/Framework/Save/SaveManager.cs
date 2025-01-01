@@ -148,7 +148,7 @@ namespace Dogabeey
 				}
 				
 				if(UserManager.currentUser != null){
-					saveToCloud(userId,"gameData",saveJson);
+					SaveToCloud(userId,"gameData",saveJson);
 				}
 				
 				
@@ -170,19 +170,6 @@ namespace Dogabeey
 				return false;
 			}
 
-
-			// if(UserManager.currentUser != null && UserManager.currentUser.gameData != null)
-			// {
-			// 	//Firebase bos stringleri donuste okunamadigi icin yerine dolar koyuyoruz. Simdi donus degerinde replace ediyoruz.
-			// 	json = JSON.Parse(JsonConvert.SerializeObject(UserManager.currentUser.gameData).Replace("$$","\\u0000"));
-			// 	//json = JSON.Parse(JsonUtility.ToJson(UserManager.currentUser.gameData));
-			// 	Debug.Log("--------> read data from user data");
-			// }else
-			// {
-			// 	json = JSON.Parse(System.IO.File.ReadAllText(SaveFilePath));
-			// 	Debug.Log("--------> read data from local");
-			// }
-
 			json = JSON.Parse(System.IO.File.ReadAllText(SaveFilePath));
 
 			
@@ -191,21 +178,12 @@ namespace Dogabeey
 		}
 
 
-		public void saveToCloud(string userId,string tag,object model)
+		public void SaveToCloud(string userId,string tag,object model)
 		{
 			Thread thread = new Thread(()=>{
 				//Firebase bos stringleri donuste okunamadigi icin yerine dolar koyuyoruz.
 				string js = JsonConvert.SerializeObject(model).Replace("\\u0000","$$");
 
-
-				// FirebaseDatabase.GetInstance(DATABASE_URL).GetReference("users").Child(userId).Child(tag).SetRawJsonValueAsync(js).ContinueWith((task => {
-				// 	if (task.IsFaulted) {
-				// 		Debug.Log("------->data save failed");
-				// 	}
-				// 	else if (task.IsCompleted) {
-				// 		Debug.Log("------->data saved successfully");
-				// 	}
-				// }));
 			});
 			thread.Start();
 			

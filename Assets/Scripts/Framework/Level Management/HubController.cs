@@ -13,7 +13,7 @@ namespace Dogabeey
         [Space]
         public Transform hubStartPoint;
 
-        internal bool[] unlockedZones;
+        public bool[] unlockedZones;
 
         public string SaveId => "HubController";
 
@@ -33,7 +33,31 @@ namespace Dogabeey
         }
         private void Start()
         {
-            Load(new Dictionary<string, object>());
+            SaveManager.Instance.Register(this);
+            if (!LoadSave())
+            {
+                unlockedZones = new bool[unlockableZones.Count];
+            }
+            else
+            {
+                // If loaded unlockable zones are not equal to the current unlockable zones, add the new ones to the list.
+                if (unlockedZones.Length != unlockableZones.Count)
+                {
+                    bool[] newUnlockedZones = new bool[unlockableZones.Count];
+                    for (int i = 0; i < newUnlockedZones.Length; i++)
+                    {
+                        if(i < unlockedZones.Length)
+                        {
+                            newUnlockedZones[i] = unlockedZones[i];
+                        }
+                        else
+                        {
+                            newUnlockedZones[i] = false;
+                        }
+                    }
+                    unlockedZones = newUnlockedZones;
+                }
+            }
         }
 
         private void UnlockZone(UnlockableZones zone)
@@ -69,7 +93,7 @@ namespace Dogabeey
                 return false;
             }
 
-            for (int i = 0; i < unlockableZones.Count; i++)
+            for (int i = 0; i < unlockedZones.Length; i++)
             {
                 unlockedZones[i] = json["zone_" + i].AsBool;
             }
