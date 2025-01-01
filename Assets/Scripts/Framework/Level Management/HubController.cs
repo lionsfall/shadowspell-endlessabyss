@@ -1,5 +1,6 @@
 using Dogabeey.SimpleJSON;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,7 @@ namespace Dogabeey
             foreach (UnlockableZones zone in unlockableZones)
             {
                 EventManager.StartListening(zone.unlockEventName, (EventParam e) => UnlockZone(zone));
+                EventManager.StartListening(zone.lockEventName, (EventParam e) => LockZone(zone));
             }
         }
         private void OnDisable()
@@ -29,11 +31,17 @@ namespace Dogabeey
             foreach (UnlockableZones zone in unlockableZones)
             {
                 EventManager.StopListening(zone.unlockEventName, (EventParam e) => UnlockZone(zone));
+                EventManager.StopListening(zone.lockEventName, (EventParam e) => LockZone(zone));
             }
         }
         private void Start()
         {
             SaveManager.Instance.Register(this);
+            Init();
+        }
+
+        private void Init()
+        {
             if (!LoadSave())
             {
                 unlockedZones = new bool[unlockableZones.Count];
@@ -46,7 +54,7 @@ namespace Dogabeey
                     bool[] newUnlockedZones = new bool[unlockableZones.Count];
                     for (int i = 0; i < newUnlockedZones.Length; i++)
                     {
-                        if(i < unlockedZones.Length)
+                        if (i < unlockedZones.Length)
                         {
                             newUnlockedZones[i] = unlockedZones[i];
                         }
@@ -57,6 +65,8 @@ namespace Dogabeey
                     }
                     unlockedZones = newUnlockedZones;
                 }
+
+                InitZones();
             }
         }
 
@@ -71,6 +81,20 @@ namespace Dogabeey
             zone.onUnlock.Invoke();
 
             unlockedZones[unlockableZones.IndexOf(zone)] = true;
+        }
+        private void LockZone(UnlockableZones zone)
+        {
+            zone.enabledObject.SetActive(false);
+            zone.disabledObject.SetActive(true);
+
+            // Find the last unlocked zone with a non-null start point and set it as the hub start point.
+            UnlockableZones lastUnlockedZone = unlockableZones.LastOrDefault(z => z.startPoint);
+            if (lastUnlockedZone != null)
+            {
+                hubStartPoint = lastUnlockedZone.startPoint;
+            }
+
+            unlockedZones[unlockableZones.IndexOf(zone)] = false;
         }
 
         public Dictionary<string, object> Save()
@@ -100,7 +124,20 @@ namespace Dogabeey
             return true;
         }
 
+        //For each "unlocked" zones, initialize the unlockable zones and enable or disable based on the unlockedZones array.
+        private void InitZones()
+        {
+            for (int i = 0; i < unlockableZones.Count; i++)
+            {
+                UnlockableZones zone = unlockableZones[i];
+                if(zone.enabledObject) zone.enabledObject.SetActive(unlockedZones[i]);
+                if (zone.disabledObject) zone.disabledObject.SetActive(!unlockedZones[i]);
+            }
+        }
+
     }
+
+    
 
     [System.Serializable]
     public class UnlockableZones
@@ -111,6 +148,8 @@ namespace Dogabeey
         public GameObject disabledObject;
         [Tooltip("The name of the event which unlocks the zone.")]
         public string unlockEventName;
+        [Tooltip("The name of the event which locks the zone.")]
+        public string lockEventName;
         [Tooltip("(Optional) Changes the start point of the hub to that location.")]
         public Transform startPoint;
         [Tooltip("The event which is triggered upon unlocking the zone.")]
