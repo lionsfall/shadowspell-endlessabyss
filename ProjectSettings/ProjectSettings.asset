@@ -145,9 +145,7 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1
-  preloadedAssets:
-  - {fileID: -944628639613478452, guid: 1b5725687febcf84392369ea6f576628, type: 3}
-  - {fileID: 11400000, guid: 4d9be9ee80c6a6c4ab8348a765c79a32, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -765,7 +763,7 @@ PlayerSettings:
     Standalone: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro;STEAMWORKS_NET;STEAM_ENABLED;ODIN_INSPECTOR;ODIN_INSPECTOR_3;DREAMTECK_SPLINES;LEVELPLAY_DEPENDENCIES_INSTALLED;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3
     VisionOS: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro
     WebGL: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro
-    Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;LEVELPLAY_DEPENDENCIES_INSTALLED
+    Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro
     XboxOne: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro
     iPhone: TextMeshPro
     tvOS: UNITY_POST_PROCESSING_STACK_V2;TextMeshPro
@@ -804,11 +802,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Template3D
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets/WSATestCertificate.pfx
+  metroCertificatePath: 
   metroCertificatePassword: 
-  metroCertificateSubject: Lionsfall
-  metroCertificateIssuer: Lionsfall
-  metroCertificateNotAfter: 00bf90fea1a9dc01
+  metroCertificateSubject: 
+  metroCertificateIssuer: 
+  metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: shadow-puzzle-2d

@@ -26,17 +26,17 @@ namespace Dogabeey
             {
                 WorldManager.Instance.ResetCurrentLevel();
             }
-            //if(Input.GetKeyDown(KeyCode.A))
-            //{
-            //    if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            //    {
-            //        UnityAdsManager.Instance.ShowRewardedAd();
-            //    }
-            //    else
-            //    {
-            //        UnityAdsManager.Instance.ShowAd();
-            //    }
-            //}
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    UnityAdsManager.Instance.ShowRewardedAd();
+                }
+                else
+                {
+                    UnityAdsManager.Instance.ShowAd();
+                }
+            }
             if (Input.GetKeyDown(KeyCode.C))
             {
                 if (coinSource != null)
