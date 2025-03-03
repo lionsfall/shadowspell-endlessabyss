@@ -426,7 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   unlockableZones: []
-  hubStartPoint: {fileID: 0}
+  hubStartPoint: {fileID: 5120543934254136594}
+  unlockedZones: 
 --- !u!1 &5821180565261088150
 GameObject:
   m_ObjectHideFlags: 0
