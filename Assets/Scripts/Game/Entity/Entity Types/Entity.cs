@@ -232,6 +232,7 @@ namespace Dogabeey
             if (projectilePrefab != null && direction.magnitude != 0)
             {
                 Debug.Log("Throwing projectile against " + direction + " with magnitude " + direction.magnitude);
+                direction.Normalize();
                 Projectile p = Instantiate(ProjectileInstance, projectilePosition ? projectilePosition.position : transform.position, Quaternion.identity);
                 p.owner = this;
                 p.gameObject.SetActive(true);
