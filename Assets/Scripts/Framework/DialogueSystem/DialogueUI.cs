@@ -126,8 +126,6 @@ public class DialogueUI : MonoBehaviour
         else 
             StartCoroutine(FocusCameraToFocusTarget());
 
-        CinemachinePositionComposer posComposer = cinemachineCamera.GetComponent<CinemachinePositionComposer>();
-        posComposer.Damping = Vector3.one * node.focusTime;
 
         foreach (char letter in text.ToCharArray())
         {
@@ -150,6 +148,8 @@ public class DialogueUI : MonoBehaviour
         DialogueNode node = dialogueChain.GetCurrentNode();
         if (node.dialogueFocus != null)
         {
+            CinemachinePositionComposer posComposer = cinemachineCamera.GetComponent<CinemachinePositionComposer>();
+            posComposer.Damping = Vector3.one * node.focusTime;
             cinemachineCamera.Target.TrackingTarget = node.dialogueFocus.transform;
             yield return new WaitForSeconds(node.focusTime);
         }
