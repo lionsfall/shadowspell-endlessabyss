@@ -541,8 +541,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066066204}
     m_Modifications:
     - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].focusTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
       propertyPath: dialogueNodes.Array.data[1].focusTime
-      value: 5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
       propertyPath: dialogueNodes.Array.data[0].dialogueFocus
@@ -552,6 +556,10 @@ PrefabInstance:
       propertyPath: dialogueNodes.Array.data[1].dialogueFocus
       value: 
       objectReference: {fileID: 1465482543}
+    - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].waitForFocusBeforeDialogue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
       propertyPath: dialogueNodes.Array.data[1].waitForFocusBeforeDialogue
       value: 1

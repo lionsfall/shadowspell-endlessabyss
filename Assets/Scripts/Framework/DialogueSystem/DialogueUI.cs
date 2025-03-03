@@ -36,7 +36,6 @@ public class DialogueUI : MonoBehaviour
         controls.Player.Interact.canceled += Interact_canceled;
         controls.Player.Jump.canceled += Interact_canceled;
 
-        cinemachineBrainEvent.BlendFinishedEvent.AddListener((_, __) => OnCameraCut(cinemachineCamera, _));
     }
 
 
@@ -48,15 +47,12 @@ public class DialogueUI : MonoBehaviour
         controls.Player.Jump.canceled -= Interact_canceled;
         controls.Player.Disable();
 
-        cinemachineBrainEvent.BlendFinishedEvent.RemoveListener((_, __) => OnCameraCut(cinemachineCamera, _));
-    }
-    private void OnCameraCut(ICinemachineCamera _, ICinemachineMixer __)
-    {
-        TriggerCameraCut();
     }
 
     private void TriggerCameraCut()
     {
+        Debug.Log("Camera reached position");
+
         cameraReachedPosTrigger = true;
         DOVirtual.DelayedCall(0.1f, () => { cameraReachedPosTrigger = false; });
     }
@@ -155,7 +151,7 @@ public class DialogueUI : MonoBehaviour
         if (node.dialogueFocus != null)
         {
             cinemachineCamera.Target.TrackingTarget = node.dialogueFocus.transform;
-            yield return new WaitUntil(() => cameraReachedPosTrigger);
+            yield return new WaitForSeconds(node.focusTime);
         }
 
         yield break;
