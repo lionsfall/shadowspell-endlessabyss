@@ -29,7 +29,7 @@ public class DialogueChain : MonoBehaviour
         {
             canvasGroup.alpha = 0;
             canvasGroup.blocksRaycasts = false;
-            //currentNodeIndex = 0;
+            enabled = false;
         }
     }
 
