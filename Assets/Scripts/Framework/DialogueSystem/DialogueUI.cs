@@ -109,27 +109,46 @@ public class DialogueUI : MonoBehaviour
             {
                 spedUp = false;
                 canContinue = false;
-                StartCoroutine(TypeText(dialogueChain.GetCurrentNode().dialogueText));
+                StartCoroutine(DialogueCoroutine(dialogueChain.GetCurrentNode().dialogueText));
             }
         }
     }
 
-    IEnumerator TypeText(string text)
+    IEnumerator DialogueCoroutine(string text)
     {
         DialogueNode node = dialogueChain.GetCurrentNode();
 
         if (node != null)
+        {
             node.onDialogueStart.Invoke();
 
-        if(node.waitForFocusBeforeDialogue)
-            yield return StartCoroutine(FocusCameraToFocusTarget());
-        else 
-            StartCoroutine(FocusCameraToFocusTarget());
+            if (node.waitForFocusBeforeDialogue)
+                yield return StartCoroutine(FocusCameraToFocusTarget());
+            else
+                StartCoroutine(FocusCameraToFocusTarget());
+        }
+        // Set color of text
+        textDisplay.color = node.textColor;
 
-
-        foreach (char letter in text.ToCharArray())
+        // Trigger speech animation
+        if (node.dialogueFocusObject != null)
         {
-            textDisplay.text += letter;
+            Animator anim = node.dialogueFocusObject.GetComponentInChildren<Animator>();
+            if (anim != null)
+            {
+                anim.SetTrigger(node.speechAnimationTriggerString);
+            }
+        }
+
+        for (int i = 0; i < text.Length; i++)
+        { 
+            if(i % 10 == 0 && node.dialogueFocusObject)
+            {
+                Animator anim = node.dialogueFocusObject.GetComponentInChildren<Animator>();
+                anim.SetTrigger(node.speechAnimationTriggerString);
+            }
+
+            textDisplay.text += text[i];
             if((holdingContinue || spedUp))
             {
                 yield return new WaitForSeconds(textSpeed/ 10);
@@ -146,11 +165,11 @@ public class DialogueUI : MonoBehaviour
     private IEnumerator FocusCameraToFocusTarget()
     {
         DialogueNode node = dialogueChain.GetCurrentNode();
-        if (node.dialogueFocus != null)
+        if (node.dialogueFocusObject != null)
         {
             CinemachinePositionComposer posComposer = cinemachineCamera.GetComponent<CinemachinePositionComposer>();
             posComposer.Damping = Vector3.one * node.focusTime;
-            cinemachineCamera.Target.TrackingTarget = node.dialogueFocus.transform;
+            cinemachineCamera.Target.TrackingTarget = node.dialogueFocusObject.transform;
             yield return new WaitForSeconds(node.focusTime);
         }
 

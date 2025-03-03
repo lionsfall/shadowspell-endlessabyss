@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 168792591}
   - component: {fileID: 168792590}
   - component: {fileID: 168792589}
+  - component: {fileID: 168792593}
   m_Layer: 0
   m_Name: target 1
   m_TagString: Untagged
@@ -347,6 +348,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &168792593
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168792588}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68a0b77ab59648b48b50395859087c8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &933945184 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3766087381188570868, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
@@ -557,12 +580,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1465482543}
     - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].dialogueFocusObject
+      value: 
+      objectReference: {fileID: 168792588}
+    - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
+      propertyPath: dialogueNodes.Array.data[1].dialogueFocusObject
+      value: 
+      objectReference: {fileID: 1465482543}
+    - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
       propertyPath: dialogueNodes.Array.data[0].waitForFocusBeforeDialogue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
       propertyPath: dialogueNodes.Array.data[1].waitForFocusBeforeDialogue
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671022550641814545, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
+      propertyPath: dialogueNodes.Array.data[0].speechAnimationTriggerString
+      value: speech
       objectReference: {fileID: 0}
     - target: {fileID: 3766087381188570868, guid: 15494771afe61074f8f53ddbddb28a6d, type: 3}
       propertyPath: m_Pivot.x
@@ -761,6 +796,7 @@ GameObject:
   - component: {fileID: 1465482546}
   - component: {fileID: 1465482545}
   - component: {fileID: 1465482544}
+  - component: {fileID: 1465482548}
   m_Layer: 0
   m_Name: target 2
   m_TagString: Untagged
@@ -857,6 +893,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1465482548
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465482543}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68a0b77ab59648b48b50395859087c8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1553561527
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +954,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
